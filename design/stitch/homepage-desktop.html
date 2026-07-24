@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Olde Mill Inn of Clarkston | Lakeside Heritage Hospitality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .nav-scrolled {
+            background-color: rgba(251, 249, 244, 0.95) !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .nav-scrolled .nav-text {
+            color: #1b1c19 !important;
+        }
+        .nav-scrolled .brand-text {
+            color: #002046 !important;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d3c4b8",
+                        "surface-variant": "#e4e2dd",
+                        "secondary": "#685c53",
+                        "on-surface-variant": "#44474e",
+                        "primary": "#002046",
+                        "background": "#fbf9f4",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-highest": "#e4e2dd",
+                        "sunset-accent": "#E69A8D",
+                        "outline": "#74777f",
+                        "on-secondary": "#ffffff",
+                        "charcoal": "#2D2D2D",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#221a13",
+                        "tertiary-fixed": "#d3e8d5",
+                        "surface-bright": "#fbf9f4",
+                        "surface-dim": "#dbdad5",
+                        "on-primary-container": "#87a0cd",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#0e1f13",
+                        "tertiary": "#132418",
+                        "on-tertiary-container": "#8fa492",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary-container": "#283a2d",
+                        "surface": "#fbf9f4",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#aec7f7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "surface-white": "#FFFFFF",
+                        "tertiary-fixed-dim": "#b7ccb9",
+                        "inverse-surface": "#30312e",
+                        "secondary-fixed": "#f0e0d3",
+                        "on-tertiary-fixed-variant": "#394b3d",
+                        "secondary-container": "#f0e0d3",
+                        "primary-container": "#1b365d",
+                        "on-primary-fixed-variant": "#2e476f",
+                        "on-primary-fixed": "#001b3d",
+                        "on-secondary-fixed-variant": "#4f453c",
+                        "on-secondary-container": "#6e6258",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#aec7f7",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1c19",
+                        "surface-tint": "#465f88",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "on-background": "#1b1c19",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "container-max-width": "1280px",
+                        "margin-mobile": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "label-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out px-margin-desktop h-20 flex justify-between items-center bg-transparent" id="top-nav">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl brand-text text-surface-white" data-icon="water_lux">water_lux</span>
+<span class="font-display-lg text-headline-lg brand-text text-surface-white">Olde Mill Inn</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="nav-text text-surface-white font-label-lg text-label-lg hover:text-sunset-accent transition-colors" href="#">Rooms</a>
+<a class="nav-text text-surface-white font-label-lg text-label-lg hover:text-sunset-accent transition-colors" href="#">Experience</a>
+<a class="nav-text text-surface-white font-label-lg text-label-lg hover:text-sunset-accent transition-colors" href="#">Pine Knob</a>
+<a class="nav-text text-surface-white font-label-lg text-label-lg hover:text-sunset-accent transition-colors" href="#">Gallery</a>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-all active:scale-95">Book Now</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A serene cinematic shot of a luxury boutique inn situated on the edge of a calm, crystalline lake at sunrise. The architecture features elegant white siding and classic heritage details. Soft golden morning light reflects off the water, creating a peaceful, high-end atmosphere. The overall mood is airy, sophisticated, and tranquil, with deep blues and warm sun-kissed tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQV6q8w8qiE91TpV0nIPAQ0ui29uV_CdfTCznKdDGQeFI0OdBfJgQCKueRCuOc0WegZWlIBgEWB-V2aHquTIjrIGprcuNuVtRctYBAU5olNG95CMT5K_rn1K4rta3s5HnmpWSpBETuL-EL8dBWgwnsXZcqasp1kO1-h1eoJL7DFbqiukRUkgvzbo8ul-xK3RETcFMST-sd0m16JhNLGSMQFuI76CvLXrvcLN7GztqHK8albSUAfN4nfLimY807Rl6pzJHdTM_mxDg')"></div>
+<div class="absolute inset-0 bg-primary/20"></div>
+</div>
+<div class="relative z-10 text-center max-w-4xl px-4 text-surface-white">
+<h1 class="font-display-lg text-display-lg mb-6 drop-shadow-lg">Stay on the Lake. Minutes from Pine Knob.</h1>
+<p class="font-body-lg text-body-lg mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed">
+                Enjoy a relaxed Clarkston stay with comfortable rooms, complimentary kayaks and pedal boats, waterfront spaces, and convenient access to concerts, skiing, dining, and local attractions.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-lg text-label-lg hover:shadow-lg transition-all transform hover:-translate-y-1">Check Availability</button>
+<button class="bg-surface-white/20 backdrop-blur-md border border-surface-white/30 text-surface-white px-10 py-4 rounded-full font-label-lg text-label-lg hover:bg-surface-white/30 transition-all">View Rooms</button>
+</div>
+</div>
+<!-- Booking Strip Integrated -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-container-max-width px-margin-desktop hidden lg:block">
+<div class="glass-effect p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-outline-variant/30">
+<div class="flex-1 grid grid-cols-3 divide-x divide-outline-variant/50">
+<div class="px-4">
+<label class="block text-[10px] uppercase tracking-wider font-bold text-on-surface-variant mb-1">Check-in</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface font-semibold" type="date" value="2024-07-15"/>
+</div>
+<div class="px-4">
+<label class="block text-[10px] uppercase tracking-wider font-bold text-on-surface-variant mb-1">Check-out</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface font-semibold" type="date" value="2024-07-18"/>
+</div>
+<div class="px-4">
+<label class="block text-[10px] uppercase tracking-wider font-bold text-on-surface-variant mb-1">Guests</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface font-semibold">
+<option>2 Adults</option>
+<option>3 Adults</option>
+<option>Family (2+2)</option>
+</select>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-label-lg text-label-lg hover:bg-primary-container transition-all flex items-center gap-2">
+                    Check Availability <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Trust Strip -->
+<section class="bg-surface-white py-12 border-b border-outline-variant/20">
+<div class="max-w-container-max-width mx-auto px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="water">water</span>
+</div>
+<span class="font-label-lg text-on-surface">Lakefront Setting</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="music_note">music_note</span>
+</div>
+<span class="font-label-lg text-on-surface">Near Pine Knob</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="kayaking">kayaking</span>
+</div>
+<span class="font-label-lg text-on-surface">Complimentary Kayaks</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="local_parking">local_parking</span>
+</div>
+<span class="font-label-lg text-on-surface">Free Parking</span>
+</div>
+</div>
+</section>
+<!-- Featured Rooms -->
+<section class="py-section-gap max-w-container-max-width mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Our Featured Accommodations</h2>
+<div class="h-1 w-20 bg-sunset-accent mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-outline-variant/10 group">
+<div class="relative h-64 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A luxurious hotel room interior featuring a king-sized bed with crisp white linens and navy blue throw pillows. Large windows offer a stunning, direct view of a tranquil blue lake. The room is designed in a modern lakeside heritage style with warm wood accents, soft neutral walls, and a peaceful, bright atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAaERy0sdQfswF5MpwENGXKrRkQo9B-kPDgiU0snU6y7jV4zd7Md_SrGLr2kecfLE5oXNGftIM2KWyJ_NkRnBdFGqOtQ7qcouG-mODK0dpIJbgFuQ1OuG96B6qaMEBPlS34GnbaCOhEqtQxTkBOAI41nRm7Km0XpyulzgmkoRGpdXC8-J4lAhiy85JCdUk6wgnCXyxogVZlKxXD4y08W0dmrkWxJCK9Uz5Pm_gjiIfRE4f5Y_s_MZHCINNKIQNA-Y8HIn1GCAZ1iWM')"></div>
+<div class="absolute top-4 left-4 bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Lakefront</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Lakefront King</h3>
+<p class="text-primary font-bold text-lg">from $249</p>
+</div>
+<p class="text-on-surface-variant font-body-md mb-6">Unobstructed water views with premium plush king bedding.</p>
+<div class="flex items-center gap-4 mb-6 border-t border-b border-outline-variant/30 py-3">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="king_bed">king_bed</span> King
+                        </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="wifi">wifi</span> Free WiFi
+                        </div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-on-primary transition-all">View Details</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-outline-variant/10 group">
+<div class="relative h-64 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A cozy and functional hotel kitchenette inside a queen room. Modern stainless steel appliances and clean white cabinetry are paired with a comfortable queen bed in the background. The lighting is soft and inviting, reflecting an elevated heritage hospitality aesthetic with clean lines and premium finishes." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAlBCoE8Qqyjql57mPbXeV_x4ZMSOSDBqw-_eP9HJhlxw5Fd0sRYmA6smVsJA1CoHcGPERROllBeP2t3y8AY3aYKN0DT7zySF0Qte0YJaJqX66bVVEjltXUN-rV5FimxCUUEVOaCxqDQCdfjMZP9LVg3479pj-ZmqycQQv6NIooav8Czxoc4SwJhTBCPlVqm03vZ23NTwsJRwnzkf6SeryDfp_FvscgTJsJIDWNKOYYS2PH-EP68vpGB4hLMscIKNXC8Sc-_7TUusQ')"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Queen Kitchenette</h3>
+<p class="text-primary font-bold text-lg">from $189</p>
+</div>
+<p class="text-on-surface-variant font-body-md mb-6">Perfect for longer stays featuring a fully equipped mini-kitchen.</p>
+<div class="flex items-center gap-4 mb-6 border-t border-b border-outline-variant/30 py-3">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="queen_bed">universal_currency_alt</span> Queen
+                        </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="kitchen">kitchen</span> Kitchen
+                        </div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-on-primary transition-all">View Details</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-outline-variant/10 group">
+<div class="relative h-64 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A bright and airy standard queen room with minimalist but high-quality furnishings. Light gray walls, dark wood accents, and heritage-inspired lighting create a classic and comfortable space. Large windows let in plenty of natural daylight, evoking a sense of calm and relaxation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhNpfZFqYM7vrGeJQseg4nOi3IwDKN3MKCsVXaTOlvLMAWmfsjOVdEC8q4NJ2oi_FaWc1OyfOwtqD18Pw9c6PGKcWVPQlrizO9bCt4eHwyY3jwcsg43VkN1Sl5W7UMV66SVDjJxoUZRP7ra6-jUBt0KuOW2Jm_9DjDndo7qPQqZNtbGTACgpP_iR7E3WpyVAl7FHBRXVrOR6OAXBI28whrIsAyC8MPmxSQX1bc9OS_bsLy3QUaHvVnir7eDA2QU_p8kCqZBr5dIt8')"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Standard Queen</h3>
+<p class="text-primary font-bold text-lg">from $159</p>
+</div>
+<p class="text-on-surface-variant font-body-md mb-6">Quiet comfort and heritage charm for a relaxing Clarkston escape.</p>
+<div class="flex items-center gap-4 mb-6 border-t border-b border-outline-variant/30 py-3">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="queen_bed">universal_currency_alt</span> Queen
+                        </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="coffee">coffee</span> Maker
+                        </div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-on-primary transition-all">View Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Lakefront Experience: Editorial Layout -->
+<section class="py-section-gap bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="flex flex-col lg:flex-row items-center gap-20">
+<div class="w-full lg:w-1/2 relative">
+<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+<div class="w-full h-[500px] bg-cover bg-center" data-alt="A group of people enjoying a sunny afternoon on a wooden lakeside patio. Colorful kayaks are docked nearby in the calm blue water. The setting is vibrant and filled with joy, reflecting a casual but premium resort experience. The lighting is warm and golden, highlighting the scenic beauty of the lakefront property." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrrHXNcOqBulHw35OOiw15CXLtm_fRCWjfmk9ZmEcG1TNJ7NBQj7J64crglxLEBqAu-RP_mFu62GSXb7wKdECQE8RMTNOk6szpd53UmEqZOP1Dm0Wt4n8gwxShiDHCYnc0VcQgya_JL1Gm0xLCi39OYilH7JDwbiYFr4O9mVa2_8HM2tKStASJOgI9OrBJw8SHqKBO2vkxLNmH02Hjw4RGEOP-hiO-pzi_agiSn9GqJuyTlpNeIBS5GFTPsWy1rW2oB_TJQRYBFbM')"></div>
+</div>
+<div class="absolute -bottom-10 -right-10 w-64 h-64 bg-sunset-accent rounded-2xl -z-10 opacity-20"></div>
+</div>
+<div class="w-full lg:w-1/2">
+<span class="text-sunset-accent font-label-lg uppercase tracking-[0.2em] mb-4 block">Waterfront Living</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6 leading-tight">More Than a Room</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        At Olde Mill Inn, the lake is your backyard. Wake up to the gentle sounds of the water and spend your afternoon exploring the lake with our complimentary kayaks and pedal boats. 
+                    </p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<div>
+<h4 class="font-bold text-on-surface">Private Guest Patio</h4>
+<p class="text-on-surface-variant text-sm">A serene space to enjoy your morning coffee or evening sunset.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<div>
+<h4 class="font-bold text-on-surface">Water Activities</h4>
+<p class="text-on-surface-variant text-sm">Free use of kayaks and pedal boats for all registered guests.</p>
+</div>
+</div>
+</div>
+<button class="mt-10 bg-primary text-on-primary px-8 py-4 rounded-full font-label-lg text-label-lg hover:shadow-lg transition-all">Explore Experience</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pine Knob Section -->
+<section class="relative py-section-gap">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="bg-primary rounded-3xl p-12 lg:p-20 flex flex-col lg:flex-row items-center justify-between text-on-primary gap-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+
+</div>
+<div class="relative z-10 lg:w-3/5">
+<h2 class="font-headline-lg text-[40px] leading-tight mb-6">Going to Pine Knob? <br/>Stay Five Miles Away.</h2>
+<p class="text-on-primary-container text-body-lg mb-8 max-w-lg">
+                        Avoid the traffic and the noise. We are located just a short 5-minute drive from the Pine Knob Music Theatre and Ski Resort, offering a peaceful sanctuary to return to after your event.
+                    </p>
+<div class="flex items-center gap-6">
+<div class="text-center">
+<p class="text-3xl font-bold">5</p>
+<p class="text-[10px] uppercase tracking-wider opacity-70">Minutes Away</p>
+</div>
+<div class="w-px h-12 bg-on-primary-container opacity-30"></div>
+<div class="text-center">
+<p class="text-3xl font-bold">0</p>
+<p class="text-[10px] uppercase tracking-wider opacity-70">Stress</p>
+</div>
+</div>
+</div>
+<div class="relative z-10 lg:w-2/5 flex justify-center">
+<div class="bg-surface-white/10 backdrop-blur-md p-8 rounded-2xl border border-on-primary/20 w-full">
+<span class="material-symbols-outlined text-4xl mb-4 text-sunset-accent" data-icon="confirmation_number">confirmation_number</span>
+<h3 class="font-headline-md mb-4">Concert Goers Special</h3>
+<p class="text-sm opacity-80 mb-6">Check out our packages for concert attendees, including late checkout and refreshment options.</p>
+<button class="w-full bg-sunset-accent text-primary font-bold py-4 rounded-xl hover:bg-surface-white transition-all">Learn More</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="py-section-gap bg-surface">
+<div class="max-w-container-max-width mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Guest Testimonials</h2>
+<div class="flex justify-center text-sunset-accent gap-1">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-white p-8 rounded-2xl shadow-sm border border-outline-variant/10">
+<p class="italic text-on-surface-variant mb-6 leading-relaxed">"The perfect getaway after a show at Pine Knob. So peaceful to wake up and look at the lake. The staff was incredibly welcoming."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">S</div>
+<div>
+<p class="font-bold text-sm">Sarah Jenkins</p>
+<p class="text-xs text-on-surface-variant">Stayed June 2024</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-white p-8 rounded-2xl shadow-sm border border-outline-variant/10">
+<p class="italic text-on-surface-variant mb-6 leading-relaxed">"We loved using the free kayaks in the morning. The rooms are clean, well-appointed, and the view of the water is unbeatable."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">M</div>
+<div>
+<p class="font-bold text-sm">Mark Thompson</p>
+<p class="text-xs text-on-surface-variant">Stayed May 2024</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-white p-8 rounded-2xl shadow-sm border border-outline-variant/10">
+<p class="italic text-on-surface-variant mb-6 leading-relaxed">"Hidden gem in Clarkston. Historic feel with all the modern comforts you'd want. The patio area is spectacular at sunset."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">L</div>
+<div>
+<p class="font-bold text-sm">Linda G.</p>
+<p class="text-xs text-on-surface-variant">Stayed April 2024</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full py-section-gap px-margin-desktop">
+<div class="max-w-container-max-width mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-3xl text-secondary-fixed" data-icon="water_lux">water_lux</span>
+<span class="font-headline-lg text-headline-lg text-secondary-fixed">Olde Mill Inn</span>
+</div>
+<p class="text-sm text-secondary-fixed-dim max-w-xs leading-relaxed">
+                    © 2024 Olde Mill Inn of Clarkston. Elevated Heritage Hospitality. Offering a serene sanctuary on the lake since its founding.
+                </p>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-secondary-fixed mb-6 uppercase tracking-widest">Navigation</h4>
+<ul class="space-y-4">
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Rooms</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Experience</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Pine Knob</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Gallery</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-secondary-fixed mb-6 uppercase tracking-widest">Connect</h4>
+<ul class="space-y-4">
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Offers</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-surface-white transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-secondary-fixed mb-6 uppercase tracking-widest">Location</h4>
+<p class="text-secondary-fixed-dim text-sm mb-4">5835 Dixie Hwy,<br/>Clarkston, MI 48346</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-secondary-fixed-dim flex items-center justify-center hover:bg-secondary-fixed-dim hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-secondary-fixed-dim flex items-center justify-center hover:bg-secondary-fixed-dim hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-surface-container-lowest shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all py-1 px-4" href="tel:1234567890">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="font-label-md text-label-md">Call</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all py-1 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Directions</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-6 py-2 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Book Now</span>
+</a>
+</div>
+<script>
+        // Scroll interaction for the Header
+        const nav = document.getElementById('top-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                nav.classList.add('nav-scrolled');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                nav.classList.add('bg-transparent');
+            }
+        });
+
+        // Simple Smooth Reveal on Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

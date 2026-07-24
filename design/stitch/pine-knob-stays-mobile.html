@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pine Knob Stays | Olde Mill Inn of Clarkston</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#d3c4b8",
+                    "surface-variant": "#e4e2dd",
+                    "secondary": "#685c53",
+                    "on-surface-variant": "#44474e",
+                    "primary": "#002046",
+                    "background": "#fbf9f4",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-highest": "#e4e2dd",
+                    "sunset-accent": "#E69A8D",
+                    "outline": "#74777f",
+                    "on-secondary": "#ffffff",
+                    "charcoal": "#2D2D2D",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#221a13",
+                    "tertiary-fixed": "#d3e8d5",
+                    "surface-bright": "#fbf9f4",
+                    "surface-dim": "#dbdad5",
+                    "on-primary-container": "#87a0cd",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#0e1f13",
+                    "tertiary": "#132418",
+                    "on-tertiary-container": "#8fa492",
+                    "surface-container-high": "#eae8e3",
+                    "tertiary-container": "#283a2d",
+                    "surface": "#fbf9f4",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#aec7f7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f5f3ee",
+                    "surface-white": "#FFFFFF",
+                    "tertiary-fixed-dim": "#b7ccb9",
+                    "inverse-surface": "#30312e",
+                    "secondary-fixed": "#f0e0d3",
+                    "on-tertiary-fixed-variant": "#394b3d",
+                    "secondary-container": "#f0e0d3",
+                    "primary-container": "#1b365d",
+                    "on-primary-fixed-variant": "#2e476f",
+                    "on-primary-fixed": "#001b3d",
+                    "on-secondary-fixed-variant": "#4f453c",
+                    "on-secondary-container": "#6e6258",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#aec7f7",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1c19",
+                    "surface-tint": "#465f88",
+                    "inverse-on-surface": "#f2f1ec",
+                    "surface-container": "#f0eee9",
+                    "on-background": "#1b1c19",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "container-max-width": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "label-lg": ["Inter"],
+                    "display-lg": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-sunset-accent selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full flex justify-between items-center px-4 h-20 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="water_lux">water_lux</span>
+<span class="font-display-lg text-headline-md text-primary tracking-tight">Olde Mill Inn</span>
+</div>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-full font-label-lg text-label-lg shadow-sm hover:scale-95 active:scale-90 transition-all duration-300">
+            Book Now
+        </button>
+</header>
+<main class="pt-20 pb-24">
+<!-- Hero Section: Pine Knob Focus -->
+<section class="relative h-[751px] w-full overflow-hidden flex flex-col justify-end px-6 pb-12">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-75" data-alt="A serene evening view of the Olde Mill Inn at Clarkston, showing its historic heritage architecture reflected in the calm waters of a nearby lake. The scene is bathed in golden hour light, creating a warm, inviting glow that emphasizes luxury and relaxation. Modern minimalist framing highlights the lush greenery and peaceful scenic environment of Michigan hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCveGxGzHSo5CPPrSfjRop9GnPv0-LoHuU-YirlwzSvjd5EHJ4rrLCVcRDH5uX1ROn0w3aa7HakO32ft_APGtJWInHMTwx2h0PDSABJgtgYa7hwYsi3FtzzDqUboPVlvTfCOgToAKUtaoa1MS2PEV2cz5VeD72q4hhF20rd1CCdx8qMxAAVLvmYUUZv_uT6ZBf8ZQPXvnYkQIqsplcBMk39nGijSBoeNsl2o_edmOHbzxFa73SBH1krN5KobMz__xgM67-2ig8dTbM"/>
+</div>
+<div class="relative z-10 space-y-4 max-w-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-sunset-accent/90 text-white rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="music_note">music_note</span>
+<span class="font-label-md text-label-md">5 Miles from Pine Knob</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-white leading-tight">Your Ultimate Concert Home Base.</h1>
+<p class="font-body-md text-body-md text-white/90">Avoid the traffic and retreat to lakeside luxury. Elevated heritage hospitality just minutes from the theatre.</p>
+<div class="pt-4">
+<button class="w-full bg-surface-white text-primary font-label-lg text-label-lg py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+                        Check Availability
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Concert-Night Planning: Bento Layout -->
+<section class="px-6 py-section-gap">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Concert-Night Planning</h2>
+<div class="grid grid-cols-1 gap-4">
+<!-- Main Feature -->
+<div class="bg-primary-container p-6 rounded-2xl text-on-primary-container flex flex-col justify-between aspect-square">
+<div>
+<span class="material-symbols-outlined text-3xl mb-4" data-icon="local_taxi">local_taxi</span>
+<h3 class="font-headline-md text-headline-md text-on-primary-container">Seamless Shuttle</h3>
+<p class="font-body-md text-body-md mt-2 opacity-80">Pre-arranged transport to the theatre so you can focus on the music, not the parking.</p>
+</div>
+<button class="text-on-primary-container font-label-lg text-label-lg flex items-center gap-2 border-b border-on-primary-container w-fit pb-1">
+                        Book Shuttle
+                    </button>
+</div>
+<!-- Secondary Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-5 rounded-2xl flex flex-col gap-3">
+<span class="material-symbols-outlined text-sunset-accent" data-icon="restaurant">restaurant</span>
+<h4 class="font-label-lg text-label-lg text-primary">Pre-Show Bites</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Curated picnic baskets or lakeside dining.</p>
+</div>
+<div class="bg-surface-container-high p-5 rounded-2xl flex flex-col gap-3">
+<span class="material-symbols-outlined text-sunset-accent" data-icon="bedtime">bedtime</span>
+<h4 class="font-label-lg text-label-lg text-primary">Late Check-in</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Automated access for post-encore returns.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Rooms: Horizontal Scroll -->
+<section class="py-section-gap bg-surface-container-low overflow-hidden">
+<div class="px-6 mb-6 flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Recommended Rooms</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Restored with modern heritage charm.</p>
+</div>
+<button class="text-primary font-label-lg text-label-lg flex items-center gap-1">
+                    View All
+                    <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-6 overflow-x-auto no-scrollbar px-6 pb-4">
+<!-- Room Card 1 -->
+<div class="min-w-[280px] bg-surface-white rounded-2xl shadow-sm border border-outline-variant/20 overflow-hidden">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A luxurious hotel suite at Olde Mill Inn, featuring a large plush bed with premium white linens, rustic wooden beams on the ceiling, and a large window overlooking a serene blue lake. The interior design is a mix of heritage textures and modern minimalist furniture, using a palette of deep blues, warm sands, and soft whites. Lighting is ambient and calming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA66k-OZFUJFN97lN9AyB5m7PHFc373SdcaItcdcJt_tgmqA4oOf0ZIKBqZyeUF_12ay09OUVGmmJ217NVvt6uPPgq2U0kzoAqIjQpV44tr_PyhZmjRDKDLwBwEGESRxni6XFHcmG6ekQjXRZb-w7xNtm-kHAvLiKJ2PT5wW6OtqpYcXZdrPGakKBLW97U0Z2N-DHKcSq0oillIlNhYiF6lGVOEvLszaKvlnb5Y2VkZ94M6wpD3WTTFTDzB_MSIzApejNKRpAyTF5E"/>
+<div class="absolute top-3 right-3 bg-surface-white/90 backdrop-blur px-2 py-1 rounded-lg">
+<span class="font-label-md text-label-md text-primary">$289/nt</span>
+</div>
+</div>
+<div class="p-5">
+<h3 class="font-headline-md text-headline-md text-primary">The Heritage King</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 line-clamp-2">Lakeside view with a private balcony and a soaking tub perfect for post-concert wind-downs.</p>
+<div class="mt-4 flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="king_bed">king_bed</span>
+<span class="font-label-md text-label-md">King</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="waves">waves</span>
+<span class="font-label-md text-label-md">Lakefront</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Room Card 2 -->
+<div class="min-w-[280px] bg-surface-white rounded-2xl shadow-sm border border-outline-variant/20 overflow-hidden">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A modern and elegant hotel room with two queen beds, styled with heritage-inspired textiles in navy and cream. The room is brightly lit with natural light, showcasing minimalist bedside tables and high-quality artisanal finishes. The mood is sophisticated and peaceful, reflecting a high-end independent inn atmosphere near Pine Knob, Michigan." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnZDslIP40JLGcp4h1VJ8m85rXG2h9ndKQH04sE-LZEQbb9Uhg-fb2cTiZul5bUkz7B7nQsqCcX2zNkEvoWJJzpBw0xDRrZQVSwT98KPFgUTHK1bA0bpZYUA_us8XDjCxlSRgZ76sgPE774JrcaIGKTVKrEgPtynHkkzR4Q6g0FvlWPaElJG3DClXd9q5aS6HHm5XbWLOsmHAcgIbSEsySGWW0eJ6TDwN9XBzU88xKJkWW9w_EmDvZ-il9cXKX8lHKjrbMMuyosdg"/>
+<div class="absolute top-3 right-3 bg-surface-white/90 backdrop-blur px-2 py-1 rounded-lg">
+<span class="font-label-md text-label-md text-primary">$324/nt</span>
+</div>
+</div>
+<div class="p-5">
+<h3 class="font-headline-md text-headline-md text-primary">Mill Creek Loft</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 line-clamp-2">Multi-level suite featuring a breakfast nook and extra space for your concert crew.</p>
+<div class="mt-4 flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Sleeps 4</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="coffee">coffee</span>
+<span class="font-label-md text-label-md">Nespresso</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Nearby Dining: Image & Info -->
+<section class="px-6 py-section-gap">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Nearby Dining</h2>
+<div class="space-y-6">
+<div class="flex flex-col gap-4">
+<div class="rounded-2xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover" data-alt="A high-end restaurant interior in Clarkston, Michigan, featuring warm wood accents, ambient Edison bulb lighting, and tables set for a fine dining experience. The atmosphere is upscale yet cozy, with large windows showing a twilight lake view. The color palette emphasizes rich woods, charcoal accents, and soft golden light, reflecting the lakeside heritage style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcxNenPgftYUcTKlRe27TIptxI_F9xxwjheJqTSULbzAODypwsxBYG1ouhX84UYDS0Pm8rWPsC0Wr6ozmTmXfMaN6hdBybLDzW_MbegKl1rHMeUvClH8olvdW3iZuLyN6jSHyNdCfbXEPNvAOEdjCop5LwnUqiZhs4SDkmhA2CTDudbWJMVWNOeauteHiE7M3RJg7oGijGyBAJm2mvk_tm9mQqNONqucVqBqYk4am-4_ZcGIttSksTvUifRaG5wwIIQBMHeGTM2Ko"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">The Clarkston Union</h3>
+<span class="text-sunset-accent font-label-md text-label-md">0.8 mi</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Voted best mac & cheese in Michigan. An iconic pre-concert staple for locals and visitors alike.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="rounded-2xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover" data-alt="An outdoor lakeside patio at a premium restaurant, with string lights overhead and modern minimalist furniture. The sun is setting over the water, casting long shadows and a pinkish glow. The scene suggests a relaxed and refined pre-concert atmosphere with a focus on craft cocktails and scenic lake views." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBM4ugTMYDKp7kIM7bOGM2KvoJOww9afc65V81Z3MfvJZRK5RpcgWGjUxznZH3uExulbjicxWPFcF7sotlBVOtcn6cfNyiewNwZd_s9r47oHP_UnxCnxVJTMVN5MAbdYJM2TCe6_2zrso7O5QHQIGUrIrrsyRJJtQ-UGN9evae380pyScCX2wZT7QHxiUQoLC6yk0CuKzkvbxLxWSXjWZyOqXkYgwLQX2or15i-i3zN1eHJW0lVWZ-tQs8hLqSYG5p2V2r-w3iE00"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">Via Maesta</h3>
+<span class="text-sunset-accent font-label-md text-label-md">1.2 mi</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Elevated Italian dining with an extensive wine list for those who want a refined pre-show meal.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Availability CTA -->
+<div class="fixed bottom-16 left-0 w-full px-4 pb-4 z-40 pointer-events-none">
+<div class="bg-surface-white/95 backdrop-blur-lg border border-outline-variant/30 p-4 rounded-2xl shadow-2xl pointer-events-auto flex items-center justify-between gap-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Next Concert</span>
+<span class="font-label-lg text-label-lg text-primary">Tonight - 7:00 PM</span>
+</div>
+<button class="bg-sunset-accent text-white px-6 py-3 rounded-xl font-label-lg text-label-lg active:scale-95 transition-transform shadow-md">
+                    Check Availability
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container-lowest shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent active:scale-95 transition-all" href="tel:+1555555555">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="font-label-md text-label-md mt-1">Call</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md mt-1">Directions</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-6 py-2 tap-highlight-transparent active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Book Now</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary py-12 px-6 pb-32">
+<div class="space-y-8">
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl" data-icon="water_lux">water_lux</span>
+<span class="font-headline-lg text-headline-lg text-secondary-fixed">Olde Mill Inn</span>
+</div>
+<p class="font-body-md text-body-md text-secondary-fixed-dim max-w-xs">Elevated Heritage Hospitality on the shores of Clarkston. Your sanctuary between the city and the stage.</p>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-8">
+<a class="font-label-lg text-label-lg text-secondary-fixed-dim hover:text-white transition-colors" href="#">Rooms</a>
+<a class="font-label-lg text-label-lg text-secondary-fixed-dim hover:text-white transition-colors" href="#">Experience</a>
+<a class="font-label-lg text-label-lg text-secondary-fixed-dim hover:text-white transition-colors" href="#">Pine Knob</a>
+<a class="font-label-lg text-label-lg text-secondary-fixed-dim hover:text-white transition-colors" href="#">Gallery</a>
+<a class="font-label-lg text-label-lg text-secondary-fixed-dim hover:text-white transition-colors" href="#">Offers</a>
+<a class="font-label-lg text-label-lg text-secondary-fixed-dim hover:text-white transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="pt-8 border-t border-white/10">
+<p class="font-body-md text-label-md text-secondary-fixed-dim opacity-70">
+                    © 2024 Olde Mill Inn of Clarkston. Elevated Heritage Hospitality.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for smooth scrolling or hover-like states on mobile
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('touchstart', function() {
+                this.classList.add('opacity-80');
+            });
+            elem.addEventListener('touchend', function() {
+                this.classList.remove('opacity-80');
+            });
+        });
+    </script>
+</body></html>

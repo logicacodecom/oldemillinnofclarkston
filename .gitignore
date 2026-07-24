@@ -1,12 +1,14 @@
 # Hi-res photo originals — kept local only, not pushed (~418 MB). See README.
 /assets/gallery/full/
 
-# Dependencies / build output (once site tooling is added)
+# Dependencies / build output
 node_modules/
 dist/
 build/
 .next/
+next-env.d.ts
 .cache/
+*.tsbuildinfo
 *.log
 
 # Env / secrets
