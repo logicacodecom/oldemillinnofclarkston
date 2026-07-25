@@ -54,7 +54,7 @@ export function Header() {
             priority
             className="h-14 w-auto drop-shadow-sm"
           />
-          <span className="flex flex-col leading-none">
+          <span className="flex flex-col items-center leading-none">
             <span
               className={`font-script text-[34px] leading-[1.1] ${
                 light ? "text-surface-white" : "text-primary"
