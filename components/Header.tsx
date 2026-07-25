@@ -60,7 +60,10 @@ export function Header() {
                 light ? "text-surface-white" : "text-primary"
               }`}
             >
-              The Olde Mill Inn
+              <span className="align-super text-[0.36em] font-label-lg not-italic uppercase tracking-[0.15em] mr-0.5">
+                The
+              </span>
+              Olde Mill Inn
             </span>
             <span
               className={`font-label-lg text-[10px] sm:text-[11px] uppercase tracking-[0.18em] mt-1 whitespace-nowrap ${
@@ -72,7 +75,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-7">
+        <nav aria-label="Primary" className="hidden xl:flex items-center gap-6">
           {mainNav.map((link) => (
             <Link
               key={link.href}
@@ -97,7 +100,7 @@ export function Header() {
 
         <button
           type="button"
-          className={`lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg ${
+          className={`xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg ${
             light ? "text-surface-white" : "text-on-surface"
           }`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -113,7 +116,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!menuOpen}
-        className="lg:hidden fixed inset-0 top-20 bg-background overflow-y-auto"
+        className="xl:hidden fixed inset-0 top-20 bg-background overflow-y-auto"
       >
         <nav aria-label="Mobile" className="flex flex-col px-margin-mobile py-6 gap-1">
           {mainNav.map((link) => (
