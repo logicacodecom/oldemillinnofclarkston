@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNav } from "@/lib/nav";
@@ -44,17 +45,30 @@ export function Header() {
       }`}
     >
       <div className="h-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label={`${property.name} — home`}>
-          <Icon
-            name="water_drop"
-            className={`text-3xl ${light ? "text-surface-white" : "text-primary"}`}
+        <Link href="/" className="flex items-center gap-3" aria-label={`${property.name} — home`}>
+          <Image
+            src="/images/logo.png"
+            alt=""
+            width={292}
+            height={350}
+            priority
+            className="h-14 w-auto drop-shadow-sm"
           />
-          <span
-            className={`font-headline-lg text-headline-md leading-none ${
-              light ? "text-surface-white" : "text-primary"
-            }`}
-          >
-            Olde Mill Inn
+          <span className="flex flex-col leading-none">
+            <span
+              className={`font-headline-lg text-headline-md ${
+                light ? "text-surface-white" : "text-primary"
+              }`}
+            >
+              Olde Mill Inn
+            </span>
+            <span
+              className={`font-label-lg text-[11px] uppercase tracking-[0.18em] mt-1 ${
+                light ? "text-surface-white/85" : "text-on-surface-variant"
+              }`}
+            >
+              Clarkston South
+            </span>
           </span>
         </Link>
 

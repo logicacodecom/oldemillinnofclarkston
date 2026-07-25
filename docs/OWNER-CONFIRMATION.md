@@ -28,8 +28,12 @@ public site until confirmed.
       24-hour front desk/security, Pool towels, plus dated COVID-era items
       (face masks, temperature checks, sterilizing, physical distancing).
       Please confirm these are template noise so they stay off the site.
-- [ ] **Property name** — Cloudbeds shows "*The* Olde Mill Inn of Clarkston";
-      the site uses "Olde Mill Inn of Clarkston" per the brand brief.
+- [x] **Property name — confirmed by ownership: "The Olde Mill Inn of Clarkston
+      South."** Now used for the brand name, footer and JSON-LD, and the badge
+      logo is shown in the header/footer. Header wordmark reads "Olde Mill Inn /
+      Clarkston South". Note: Cloudbeds lists it **without** "South" — worth
+      aligning the Cloudbeds/Google Business name so they match. (This reverses
+      the original brief §4, which had forbidden the "South" variant.)
 - [ ] **Suite bed configuration** — not specified on Cloudbeds (omitted).
 
 ## Still open (not on the booking page)

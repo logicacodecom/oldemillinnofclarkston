@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { property, addressLine, directionsUrl } from "@/lib/property";
 import { mainNav, legalNav } from "@/lib/nav";
 import { EVENTS } from "@/lib/analytics";
@@ -10,10 +11,13 @@ export function Footer() {
     <footer className="bg-primary text-on-primary w-full py-section-gap px-margin-mobile md:px-margin-desktop">
       <div className="max-w-container-max-width mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         <div>
-          <div className="flex items-center gap-2 mb-6">
-            <Icon name="water_drop" className="text-3xl text-secondary-fixed" />
-            <span className="font-headline-lg text-headline-md text-secondary-fixed">
-              Olde Mill Inn of Clarkston
+          <div className="flex items-center gap-3 mb-6">
+            <Image src="/images/logo.png" alt="" width={292} height={350} className="h-14 w-auto" />
+            <span className="font-headline-lg text-headline-md text-secondary-fixed leading-tight">
+              The Olde Mill Inn
+              <span className="block text-[11px] uppercase tracking-[0.18em] font-label-lg text-secondary-fixed-dim mt-1">
+                of Clarkston South
+              </span>
             </span>
           </div>
           <p className="text-sm text-secondary-fixed-dim max-w-xs leading-relaxed">

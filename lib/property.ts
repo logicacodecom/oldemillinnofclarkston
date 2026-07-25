@@ -8,7 +8,8 @@ export type Review = {
 };
 
 export const property = {
-  name: "Olde Mill Inn of Clarkston",
+  // Official name confirmed by ownership (the badge logo carries "South").
+  name: "The Olde Mill Inn of Clarkston South",
   eyebrow: "Lakefront lodging in Clarkston, Michigan",
   website: "https://www.oldemillinnofclarkston.com/",
   address: {
