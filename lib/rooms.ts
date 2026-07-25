@@ -110,7 +110,7 @@ export const rooms: Room[] = [
   },
   {
     slug: "honeymoon-family-suite",
-    name: "Honeymoon / Family Suite",
+    name: "Presidential Honeymoon Suite",
     cloudbedsRoomTypeID: "395682",
     category: "lakefront",
     maxGuests: 4,

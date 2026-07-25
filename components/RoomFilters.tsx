@@ -14,7 +14,15 @@ const filters: { id: string; label: string; match: (r: Room) => boolean }[] = [
   { id: "two-full", label: "Two Full Beds", match: (r) => r.bedConfiguration === "Two full beds" },
 ];
 
-export function RoomFilters({ rooms }: { rooms: Room[] }) {
+export function RoomFilters({
+  rooms,
+  fromRates = {},
+  currency = "$",
+}: {
+  rooms: Room[];
+  fromRates?: Record<string, number>;
+  currency?: string;
+}) {
   const [active, setActive] = useState("all");
   const predicate = filters.find((f) => f.id === active)!.match;
   const visible = rooms.filter(predicate);
@@ -43,7 +51,7 @@ export function RoomFilters({ rooms }: { rooms: Room[] }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
         {visible.map((room) => (
-          <RoomCard key={room.slug} room={room} />
+          <RoomCard key={room.slug} room={room} fromRate={fromRates[room.slug]} currency={currency} />
         ))}
       </div>
       {visible.length === 0 && (

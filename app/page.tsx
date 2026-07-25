@@ -8,6 +8,7 @@ import { offWaterRooms, lakefrontRooms } from "@/lib/rooms";
 import { attractions } from "@/lib/attractions";
 import { featured } from "@/lib/gallery";
 import { EVENTS } from "@/lib/analytics";
+import { getFromRates } from "@/lib/cloudbeds";
 
 const trustItems = [
   { icon: "water", label: "Lakefront Setting" },
@@ -18,7 +19,8 @@ const trustItems = [
   { icon: "kitchen", label: "Selected Kitchenettes" },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { currency, bySlug } = await getFromRates();
   return (
     <>
       {/* Hero */}
@@ -113,13 +115,13 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16">
           {lakefrontRooms.map((room) => (
-            <RoomCard key={room.slug} room={room} />
+            <RoomCard key={room.slug} room={room} fromRate={bySlug[room.slug]} currency={currency} />
           ))}
         </div>
         <h2 className="font-headline-lg text-headline-lg text-primary mb-8">Off-Water Rooms</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {offWaterRooms.map((room) => (
-            <RoomCard key={room.slug} room={room} />
+            <RoomCard key={room.slug} room={room} fromRate={bySlug[room.slug]} currency={currency} />
           ))}
         </div>
       </section>

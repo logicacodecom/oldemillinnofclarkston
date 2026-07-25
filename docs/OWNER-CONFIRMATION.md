@@ -65,4 +65,4 @@ public site until confirmed.
   | Deluxe Queen | Deluxe Queen with Lake Access to lake & Kayaks |
   | Premium Queen | Premium Lakefront room with Queen bed |
   | Premium Lakefront Room with Two Full Beds | Premium Lakefront room with 2 Full Beds |
-  | Honeymoon / Family Suite | Premium Lakefront Honeymoon/Family Suite |
+  | Presidential Honeymoon Suite | Premium Lakefront Honeymoon/Family Suite |

@@ -9,6 +9,7 @@ import { TrackView } from "@/components/TrackView";
 import { rooms, roomsBySlug, amenityIcon } from "@/lib/rooms";
 import { property } from "@/lib/property";
 import { EVENTS } from "@/lib/analytics";
+import { getFromRates } from "@/lib/cloudbeds";
 
 export function generateStaticParams() {
   return rooms.map((r) => ({ slug: r.slug }));
@@ -25,10 +26,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function RoomDetailPage({ params }: { params: { slug: string } }) {
+export default async function RoomDetailPage({ params }: { params: { slug: string } }) {
   const room = roomsBySlug.get(params.slug);
   if (!room) notFound();
 
+  const { currency, bySlug } = await getFromRates();
+  const fromRate = bySlug[room.slug];
   const isLakefront = room.category === "lakefront";
   const related = rooms.filter((r) => r.slug !== room.slug && r.category === room.category).slice(0, 3);
   const relatedFallback = related.length
@@ -109,6 +112,16 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
         <aside className="lg:col-span-1">
           <div className="bg-surface-white rounded-2xl border border-outline-variant/20 shadow-sm p-6 lg:sticky lg:top-24">
             <p className="font-headline-md text-headline-md text-on-surface mb-2">Ready to stay?</p>
+            {fromRate ? (
+              <p className="mb-4 text-on-surface-variant">
+                from{" "}
+                <span className="font-display-lg text-[28px] text-primary">
+                  {currency}
+                  {fromRate}
+                </span>{" "}
+                / night
+              </p>
+            ) : null}
             <p className="text-on-surface-variant text-sm mb-6">
               Check live availability and rates through our secure booking system, or call the inn.
             </p>
@@ -140,7 +153,7 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
         <h2 className="font-headline-lg text-headline-lg text-primary mb-8">You might also like</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {relatedFallback.map((r) => (
-            <RoomCard key={r.slug} room={r} />
+            <RoomCard key={r.slug} room={r} fromRate={bySlug[r.slug]} currency={currency} />
           ))}
         </div>
       </section>
