@@ -60,7 +60,7 @@ export function Header() {
                 light ? "text-surface-white" : "text-primary"
               }`}
             >
-              <span className="align-super text-[0.36em] font-label-lg not-italic uppercase tracking-[0.15em] mr-0.5">
+              <span className="align-super text-[0.3em] font-label-lg not-italic uppercase tracking-[0.15em] mr-0.5">
                 The
               </span>
               Olde Mill Inn
