@@ -53,3 +53,12 @@ export const siteUrl = "https://www.oldemillinnofclarkston.com";
 
 // Opens Google Maps driving directions to the property.
 export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${property.geo.latitude},${property.geo.longitude}`;
+
+// Cloudbeds booking URL, optionally pre-filled with the guest's chosen dates.
+// (Passing live, user-selected dates is correct — unlike the old stale hardcoded ones.)
+export function bookingUrl(checkin?: string, checkout?: string): string {
+  if (checkin && checkout) {
+    return `${property.bookingUrl}&checkin=${checkin}&checkout=${checkout}`;
+  }
+  return property.bookingUrl;
+}

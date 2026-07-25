@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { RoomCard } from "@/components/RoomCard";
+import { AvailabilityWidget } from "@/components/AvailabilityWidget";
 import { property, directionsUrl } from "@/lib/property";
 import { offWaterRooms, lakefrontRooms } from "@/lib/rooms";
 import { attractions } from "@/lib/attractions";
@@ -44,7 +45,7 @@ export default function HomePage() {
             attractions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTA href={property.bookingUrl} external size="lg" analyticsEvent={EVENTS.bookingClick}>
+            <CTA href="#availability" size="lg">
               Check Availability
             </CTA>
             <CTA href="/rooms" variant="glass" size="lg">
@@ -63,8 +64,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Live availability & rates */}
+      <section
+        id="availability"
+        className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop -mt-16 md:-mt-24 scroll-mt-24"
+      >
+        <div className="text-center mb-5">
+          <h2 className="sr-only">Check availability and rates</h2>
+        </div>
+        <AvailabilityWidget />
+      </section>
+
       {/* Trust strip */}
-      <section aria-label="At a glance" className="bg-surface-white py-12 border-b border-outline-variant/20">
+      <section aria-label="At a glance" className="bg-surface-white py-12 border-b border-outline-variant/20 mt-section-gap">
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {trustItems.map((item) => (
             <div key={item.label} className="flex items-center gap-3">

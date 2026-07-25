@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { RoomFilters } from "@/components/RoomFilters";
+import { AvailabilityWidget } from "@/components/AvailabilityWidget";
 import { rooms } from "@/lib/rooms";
 import { featured } from "@/lib/gallery";
 
@@ -21,6 +22,10 @@ export default function RoomsPage() {
         image={featured.waterfrontBuilding}
         imageAlt="The lakefront room building at Olde Mill Inn of Clarkston seen from the water"
       />
+      <section className="pt-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+        <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Check availability &amp; rates</h2>
+        <AvailabilityWidget />
+      </section>
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
         <RoomFilters rooms={rooms} />
         <p className="mt-10 text-sm text-on-surface-variant">

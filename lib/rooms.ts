@@ -19,6 +19,7 @@ export type Room = {
   images: string[]; // our gallery numbers (see /public/images/gallery)
   bookingUrl?: string;
   rateFrom?: number; // never rendered publicly unless a verified live rate exists
+  cloudbedsRoomTypeID?: string; // joins live availability (getAvailableRoomTypes)
 };
 
 // Every room shares these (per the property description + Cloudbeds).
@@ -40,6 +41,7 @@ export const rooms: Room[] = [
   {
     slug: "standard-full",
     name: "Standard Full",
+    cloudbedsRoomTypeID: "395680",
     category: "off-water",
     bedConfiguration: "Full bed",
     maxGuests: 2,
@@ -53,6 +55,7 @@ export const rooms: Room[] = [
   {
     slug: "deluxe-queen",
     name: "Deluxe Queen",
+    cloudbedsRoomTypeID: "395679",
     category: "off-water",
     bedConfiguration: "Queen bed",
     maxGuests: 2,
@@ -66,6 +69,7 @@ export const rooms: Room[] = [
   {
     slug: "premium-queen",
     name: "Premium Queen",
+    cloudbedsRoomTypeID: "395678",
     category: "lakefront",
     bedConfiguration: "Queen bed",
     maxGuests: 2,
@@ -86,6 +90,7 @@ export const rooms: Room[] = [
   {
     slug: "premium-two-full",
     name: "Premium Lakefront Room with Two Full Beds",
+    cloudbedsRoomTypeID: "394578",
     category: "lakefront",
     bedConfiguration: "Two full beds",
     maxGuests: 4,
@@ -106,6 +111,7 @@ export const rooms: Room[] = [
   {
     slug: "honeymoon-family-suite",
     name: "Honeymoon / Family Suite",
+    cloudbedsRoomTypeID: "395682",
     category: "lakefront",
     maxGuests: 4,
     view: "Lakefront",
@@ -132,6 +138,9 @@ for (const room of rooms) {
 }
 
 export const roomsBySlug = new Map(rooms.map((r) => [r.slug, r]));
+export const roomByCloudbedsId = new Map(
+  rooms.filter((r) => r.cloudbedsRoomTypeID).map((r) => [r.cloudbedsRoomTypeID as string, r])
+);
 export const offWaterRooms = rooms.filter((r) => r.category === "off-water");
 export const lakefrontRooms = rooms.filter((r) => r.category === "lakefront");
 
