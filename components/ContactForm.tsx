@@ -64,19 +64,17 @@ export function ContactForm() {
           <label className={labelCls} htmlFor="email">Email</label>
           <input className={field} id="email" name="email" type="email" required autoComplete="email" />
         </div>
-        <div>
+        <div className="sm:col-span-2">
           <label className={labelCls} htmlFor="phone">Phone (optional)</label>
           <input className={field} id="phone" name="phone" type="tel" autoComplete="tel" />
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className={labelCls} htmlFor="arrival">Arrival (optional)</label>
-            <input className={field} id="arrival" name="arrival" type="date" />
-          </div>
-          <div>
-            <label className={labelCls} htmlFor="departure">Departure (optional)</label>
-            <input className={field} id="departure" name="departure" type="date" />
-          </div>
+        <div>
+          <label className={labelCls} htmlFor="arrival">Arrival (optional)</label>
+          <input className={field} id="arrival" name="arrival" type="date" />
+        </div>
+        <div>
+          <label className={labelCls} htmlFor="departure">Departure (optional)</label>
+          <input className={field} id="departure" name="departure" type="date" />
         </div>
       </div>
 
