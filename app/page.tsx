@@ -47,38 +47,35 @@ export default async function HomePage() {
             attractions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTA href="#availability" size="lg">
-              Check Availability
-            </CTA>
-            <CTA href="/rooms" variant="glass" size="lg">
+            <CTA href="/rooms" size="lg">
               View Rooms
             </CTA>
-          </div>
-          <p className="mt-6">
-            <a
+            <CTA
               href={property.phone.href}
-              data-analytics-event={EVENTS.phoneClick}
-              className="inline-flex items-center gap-2 text-surface-white/90 hover:text-surface-white font-label-lg"
+              variant="glass"
+              size="lg"
+              icon="call"
+              analyticsEvent={EVENTS.phoneClick}
             >
-              <Icon name="call" /> Call {property.phone.display}
-            </a>
-          </p>
+              Call {property.phone.display}
+            </CTA>
+          </div>
         </div>
       </section>
 
       {/* Live availability & rates */}
       <section
         id="availability"
-        className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop -mt-16 md:-mt-24 scroll-mt-24"
+        className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 scroll-mt-24"
       >
-        <div className="text-center mb-5">
-          <h2 className="sr-only">Check availability and rates</h2>
-        </div>
+        <h2 className="font-headline-lg text-headline-lg text-primary text-center mb-6">
+          Check availability &amp; rates
+        </h2>
         <AvailabilityWidget />
       </section>
 
       {/* Trust strip */}
-      <section aria-label="At a glance" className="bg-surface-white py-12 border-b border-outline-variant/20 mt-section-gap">
+      <section aria-label="At a glance" className="bg-surface-white py-12 border-b border-outline-variant/20">
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {trustItems.map((item) => (
             <div key={item.label} className="flex items-center gap-3">
