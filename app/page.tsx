@@ -63,12 +63,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Live availability & rates */}
+      {/* Live availability & rates — overlaps the hero on desktop, sits below it on mobile */}
       <section
         id="availability"
-        className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 scroll-mt-24"
+        className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-10 md:pt-0 md:-mt-24 md:mb-16 scroll-mt-24"
       >
-        <h2 className="font-headline-lg text-headline-lg text-primary text-center mb-6">
+        <h2 className="font-headline-lg text-headline-lg text-primary text-center mb-6 md:hidden">
           Check availability &amp; rates
         </h2>
         <AvailabilityWidget />
