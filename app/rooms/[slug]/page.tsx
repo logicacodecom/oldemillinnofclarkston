@@ -6,7 +6,7 @@ import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { RoomCard } from "@/components/RoomCard";
 import { TrackView } from "@/components/TrackView";
-import { rooms, roomsBySlug } from "@/lib/rooms";
+import { rooms, roomsBySlug, amenityIcon } from "@/lib/rooms";
 import { property } from "@/lib/property";
 import { EVENTS } from "@/lib/analytics";
 
@@ -91,7 +91,7 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
             ) : null}
             {room.amenities.map((a) => (
               <li key={a} className="flex items-center gap-2 text-on-surface-variant">
-                <Icon name="check_circle" className="text-primary text-base" /> {a}
+                <Icon name={amenityIcon(a)} className="text-primary text-base" /> {a}
               </li>
             ))}
           </ul>

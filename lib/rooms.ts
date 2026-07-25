@@ -138,3 +138,36 @@ export const lakefrontRooms = rooms.filter((r) => r.category === "lakefront");
 export function roomImage(room: Room, index = 0): string {
   return `/images/gallery/${room.images[index] ?? room.images[0]}.jpg`;
 }
+
+// Maps an amenity label to a representative Material Symbols icon. First match
+// wins, so order matters (e.g. "conditioning" before anything containing "air").
+const AMENITY_ICONS: [match: string, icon: string][] = [
+  ["conditioning", "ac_unit"],
+  ["wi-fi", "wifi"],
+  ["wifi", "wifi"],
+  ["microwave", "microwave"],
+  ["refrigerator", "kitchen"],
+  ["fridge", "kitchen"],
+  ["full kitchen", "countertops"],
+  ["kitchenette", "countertops"],
+  ["stove", "cooking"],
+  ["burner", "cooking"],
+  ["hairdry", "air"],
+  ["hair dry", "air"],
+  ["washer", "local_laundry_service"],
+  ["dryer", "local_laundry_service"],
+  ["fireplace", "fireplace"],
+  ["shower", "shower"],
+  ["coffee", "coffee_maker"],
+  ["roku", "tv"],
+  ["tv", "tv"],
+  ["mattress", "bed"],
+  ["log furniture", "cabin"],
+  ["renovated", "auto_awesome"],
+];
+
+export function amenityIcon(label: string): string {
+  const l = label.toLowerCase();
+  for (const [match, icon] of AMENITY_ICONS) if (l.includes(match)) return icon;
+  return "check_circle";
+}
