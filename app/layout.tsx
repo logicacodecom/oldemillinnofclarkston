@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { siteUrl, property } from "@/lib/property";
 import { Header } from "@/components/Header";
@@ -20,6 +20,14 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Ornate script for the "Olde Mill Inn" wordmark, approximating the logo lettering.
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
   display: "swap",
 });
 
@@ -59,7 +67,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${greatVibes.variable} scroll-smooth`}>
       <head>
         {/* Material Symbols icon font (decorative icons; paired with text labels) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

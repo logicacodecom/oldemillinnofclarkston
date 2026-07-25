@@ -56,7 +56,7 @@ export function Header() {
           />
           <span className="flex flex-col leading-none">
             <span
-              className={`font-headline-lg text-headline-md ${
+              className={`font-script text-[34px] leading-[1.1] ${
                 light ? "text-surface-white" : "text-primary"
               }`}
             >

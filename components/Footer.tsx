@@ -13,7 +13,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3 mb-6">
             <Image src="/images/logo.png" alt="" width={292} height={350} className="h-14 w-auto" />
-            <span className="font-headline-lg text-headline-md text-secondary-fixed leading-tight">
+            <span className="font-script text-[32px] text-secondary-fixed leading-tight">
               The Olde Mill Inn
               <span className="block text-[11px] uppercase tracking-[0.18em] font-label-lg text-secondary-fixed-dim mt-1">
                 of Clarkston South

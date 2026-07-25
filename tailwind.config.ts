@@ -86,6 +86,7 @@ const config: Config = {
         "display-lg-mobile": ["var(--font-playfair)", "serif"],
         "headline-lg": ["var(--font-playfair)", "serif"],
         "body-lg": ["var(--font-inter)", "sans-serif"],
+        script: ["var(--font-great-vibes)", "cursive"],
       },
       fontSize: {
         "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
