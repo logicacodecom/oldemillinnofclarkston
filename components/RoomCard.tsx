@@ -14,7 +14,7 @@ export function RoomCard({ room }: { room: Room }) {
       <div className="relative h-64">
         <Image
           src={roomImage(room)}
-          alt={`Representative photo of the ${room.name} room at Olde Mill Inn of Clarkston`}
+          alt={`The ${room.name} at Olde Mill Inn of Clarkston`}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover"
@@ -34,6 +34,11 @@ export function RoomCard({ room }: { room: Room }) {
           {room.bedConfiguration && (
             <span className="inline-flex items-center gap-1">
               <Icon name="king_bed" className="text-base" /> {room.bedConfiguration}
+            </span>
+          )}
+          {room.maxGuests && (
+            <span className="inline-flex items-center gap-1">
+              <Icon name="group" className="text-base" /> Sleeps {room.maxGuests}
             </span>
           )}
           <span className="inline-flex items-center gap-1">

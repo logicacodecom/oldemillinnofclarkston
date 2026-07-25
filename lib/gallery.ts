@@ -23,19 +23,19 @@ export const galleryCategories: GalleryCategory[] = [
     id: "exterior",
     label: "Exterior & Grounds",
     alt: "Exterior and grounds at Olde Mill Inn of Clarkston",
-    numbers: range(1, 9),
+    numbers: range(1, 8),
   },
   {
     id: "rooms",
     label: "Rooms & Interiors",
     alt: "Guest room interior at Olde Mill Inn of Clarkston",
-    numbers: range(10, 49),
+    numbers: range(9, 48),
   },
   {
     id: "lakefront",
     label: "Lakefront & Deck",
     alt: "Lakefront setting and covered deck at Olde Mill Inn of Clarkston",
-    numbers: range(50, 69),
+    numbers: range(49, 69),
   },
 ];
 

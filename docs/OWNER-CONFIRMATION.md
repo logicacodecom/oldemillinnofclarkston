@@ -1,73 +1,52 @@
 # Owner-confirmation checklist
 
-The website ships without these values rather than inventing them. Each is
-omitted gracefully from the public site until confirmed. Update the noted file,
-then the content appears automatically.
+Updated after syncing to the property's Cloudbeds booking system (source of
+truth). Resolved items are checked; open items still omit gracefully from the
+public site until confirmed.
 
-## Branding
-- [ ] **Logo says "SOUTH".** The supplied logo (`assets/brand/logo.png`) reads
-      "Olde Mill Inn of Clarkston — SOUTH", which conflicts with the required
-      public name "Olde Mill Inn of Clarkston" (no "South"). The site currently
-      uses a typographic wordmark. Provide a logo without "South" (or confirm the
-      correct mark) to feature the badge in the header/footer.
+## Synced from Cloudbeds ✅
+- [x] **Room occupancy** — Standard Full 2 · Deluxe Queen 2 · Premium Queen 2 ·
+      Premium Two Full 4 · Honeymoon/Family Suite 4.
+- [x] **Kitchenettes per room** — Deluxe Queen, Premium Queen, Premium Two Full
+      have kitchenettes; the Suite has a **full kitchen**; Standard Full has none.
+- [x] **Fireplaces** — wall-mounted **electric** fireplaces in Deluxe Queen,
+      Premium Queen, Premium Two Full and the Suite (not Standard Full).
+- [x] **Suite** — full kitchen + in-unit washer/dryer + large-screen TV, sleeps 4.
+- [x] **Photo → room mapping** — each room now shows its real photos, mapped to
+      the exact images Cloudbeds assigns (our local shoot).
+- [x] Per-room amenities, descriptions, dual-burner stovetops, Serta mattresses,
+      Smart TV/Roku — synced.
 
-## Rooms (`lib/rooms.ts`)
-- [ ] Exact occupancy / max guests per room type
-- [ ] Exact number of rooms
-- [ ] Room dimensions / square footage
-- [ ] Which specific rooms have kitchenettes
-- [ ] Any fireplaces (none currently claimed)
-- [ ] Presidential / Honeymoon Suite bed configuration
-- [ ] Full-kitchen availability (none currently claimed)
-- [ ] Washer / dryer availability (none currently claimed)
-- [ ] Current rates (no prices are shown; CTA is "Check Availability")
-- [ ] Room-specific Cloudbeds URLs (all rooms currently use the general clean URL)
-- [ ] **Photo → room mapping.** Room photos are currently *representative*
-      interior shots (labeled as such). Confirm which gallery images belong to
-      each room type so galleries can be made room-accurate.
+## Please confirm / flag
+- [ ] **Public email changed.** Cloudbeds lists `oldmillinnofclarkston@gmail.com`
+      (now used site-wide). The earlier brief said `OldMillInn@icloud.com`.
+      Confirm which is the correct public contact.
+- [ ] **Cloudbeds amenity list is polluted with template defaults.** Its 69-item
+      list includes things that are almost certainly **not** true for this
+      property and were **deliberately not published**: on-site Restaurant
+      (incl. Halal/Kosher), Room service (24h), Valet, Fax/Printer/Photocopying,
+      24-hour front desk/security, Pool towels, plus dated COVID-era items
+      (face masks, temperature checks, sterilizing, physical distancing).
+      Please confirm these are template noise so they stay off the site.
+- [ ] **Property name** — Cloudbeds shows "*The* Olde Mill Inn of Clarkston";
+      the site uses "Olde Mill Inn of Clarkston" per the brand brief.
+- [ ] **Suite bed configuration** — not specified on Cloudbeds (omitted).
 
-## Amenities & policies
-- [ ] Accessibility features of rooms/property (none claimed on-site)
-- [ ] Wi-Fi quality (shown as "available", not "high-speed")
-- [ ] Smoking policy (non-smoking options mentioned generally)
-- [ ] Cancellation policy specifics
-- [ ] Deposit requirements
-- [ ] Minimum check-in age
-- [ ] Early check-in rules
-- [ ] Late checkout rules
-- [ ] Late-arrival procedure
-- [ ] Kayak & pedal-boat safety rules
-- [ ] Seasonal watercraft availability windows
-- [ ] Whether the beach is private
-- [ ] Exact connected-lake access description
+## Still open (not on the booking page)
+- [ ] Current rates (no prices shown; CTA is "Check Availability")
+- [ ] Room-specific Cloudbeds URLs (all rooms use the general clean URL)
+- [ ] Exact number of rooms / room dimensions
+- [ ] Cancellation policy specifics, deposit requirements, minimum check-in age
+- [ ] Early check-in / late checkout / late-arrival procedures
+- [ ] Full **Terms & Conditions** (not present in the booking page's static data)
+- [ ] Kayak & pedal-boat safety rules; seasonal watercraft windows
+- [ ] Whether the beach is private (Cloudbeds tags "Beach area (private)" — confirm)
+- [ ] Verified, owner-approved guest reviews (reviews section stays hidden)
+- [ ] Seasonal offers; continuous text-line availability
 
-## Contact & reviews
-- [ ] Professional domain email (currently `OldMillInn@icloud.com` via
-      `NEXT_PUBLIC_PROPERTY_EMAIL`)
-- [ ] Verified, owner-approved guest reviews (the reviews section is hidden until
-      supplied — no reviews are fabricated)
-- [ ] Seasonal offers (no Offers page is active)
-- [ ] Continuous text-line availability (no guaranteed response time is promised)
-
-## Distances
-Pine Knob (≈5 mi), Pine Knob Ski (≈5 mi), Alpine Valley (≈8 mi), Mt. Holly
-(≈12 mi) are shown as **approximate**. Confirm if you want exact figures.
-
-## Technical items to wire before/after launch
-- [ ] **Contact backend** — set `CONTACT_WEBHOOK_URL` so the contact form
-      delivers messages. Until set, the form returns a clear error and directs
-      guests to call/text (it never silently drops a submission). See
-      `app/api/contact/route.ts`.
-- [ ] **Analytics** — set `NEXT_PUBLIC_GA_ID` (or wire `window.dataLayer`).
-      Events are already emitted: booking_click, availability_search,
-      phone_click, text_click, directions_click, room_view, pine_knob_cta_click,
-      contact_form_submit, email_click. No analytics ID is hardcoded.
-- [ ] **Email capture** — no newsletter signup is shipped (no destination
-      configured). Add one only when there is a real list to collect into.
-- [ ] **Availability widget** — the site links to the secure Cloudbeds booking
-      system rather than simulating live availability/date search. If a real
-      embeddable availability integration is provided, it can replace the CTA.
-- [ ] **Redirects** — if replacing the current live site, map old URLs to the new
-      routes (add to `next.config.mjs`).
-- [ ] **Legal review** — Privacy and Accessibility statements are drafts to be
-      reviewed/approved before launch.
+## Technical (wire before/after launch)
+- [ ] `CONTACT_WEBHOOK_URL` — activates contact-form delivery (else it errors
+      clearly and points to call/text; never silently drops).
+- [ ] `NEXT_PUBLIC_GA_ID` — analytics (events already emitted).
+- [ ] Old-URL redirects if replacing the current live site (`next.config.mjs`).
+- [ ] Legal review of Privacy & Accessibility drafts.

@@ -1,9 +1,9 @@
 import { property } from "./property";
 
-// Only verified/currently-published values are modeled here. Unknown values
-// (occupancy, square footage, price, kitchenette-per-room, fireplace, etc.)
-// are intentionally omitted rather than invented (§10, §11). See
-// docs/OWNER-CONFIRMATION.md for the outstanding items.
+// Synced to the property's own booking system (Cloudbeds) as the source of
+// truth: room names, categories, occupancy, per-room amenities, descriptions,
+// and photo assignments. Photos are OUR local shoot, mapped to each room using
+// the exact image assignments Cloudbeds uses.
 
 export type Room = {
   slug: string;
@@ -16,17 +16,24 @@ export type Room = {
   fireplace?: boolean;
   view?: string;
   amenities: string[];
-  images: string[]; // gallery numbers (see /public/images/gallery). Representative.
+  images: string[]; // our gallery numbers (see /public/images/gallery)
   bookingUrl?: string;
   rateFrom?: number; // never rendered publicly unless a verified live rate exists
 };
 
-const SHARED_ROOM_AMENITIES = [
-  "Rustic log-style furnishings",
+// Every room shares these (per the property description + Cloudbeds).
+const BASE = [
+  "Recently renovated",
+  "Rustic log furniture",
+  "Serta Perfect Sleeper mattress",
   "Stand-up shower",
   "Microwave",
   "Small refrigerator",
-  "Cable television",
+  "Cable TV",
+  "Free Wi-Fi",
+  "Air conditioning",
+  "Coffee maker",
+  "Hairdryer",
 ];
 
 export const rooms: Room[] = [
@@ -35,52 +42,86 @@ export const rooms: Room[] = [
     name: "Standard Full",
     category: "off-water",
     bedConfiguration: "Full bed",
+    maxGuests: 2,
+    kitchenette: false,
+    fireplace: false,
     shortDescription:
-      "A recently renovated off-water room with a full-size bed and warm rustic log furnishings — a comfortable, practical base for your Clarkston stay.",
-    amenities: ["Recently renovated", ...SHARED_ROOM_AMENITIES, "Access to shared property amenities"],
-    images: ["16", "19"],
+      "An off-water room with a full-size bed and warm rustic log furniture — a comfortable, practical base for your Clarkston stay, with access to the lake and kayaks.",
+    amenities: [...BASE],
+    images: ["09", "10", "11", "12", "13", "14"],
   },
   {
     slug: "deluxe-queen",
     name: "Deluxe Queen",
     category: "off-water",
     bedConfiguration: "Queen bed",
+    maxGuests: 2,
+    kitchenette: true,
+    fireplace: true,
     shortDescription:
-      "A recently renovated off-water room with a queen bed and rustic log details, a short walk from the lakefront and shared outdoor spaces.",
-    amenities: ["Recently renovated", ...SHARED_ROOM_AMENITIES],
-    images: ["32", "34"],
+      "An off-water room with a queen bed and rustic log furniture, featuring a wall-mounted electric fireplace and a kitchenette. Includes lake access and kayaks.",
+    amenities: [...BASE, "Kitchenette", "Wall-mounted electric fireplace", "Smart TV with Roku"],
+    images: ["16", "17", "18", "19", "21"],
   },
   {
     slug: "premium-queen",
     name: "Premium Queen",
     category: "lakefront",
     bedConfiguration: "Queen bed",
+    maxGuests: 2,
     view: "Lakefront",
+    kitchenette: true,
+    fireplace: true,
     shortDescription:
-      "A recently renovated lakefront room with a queen bed and rustic log furnishings, set near the water and the covered patio.",
-    amenities: ["Recently renovated", ...SHARED_ROOM_AMENITIES],
-    images: ["36", "38"],
+      "A lakefront room with a queen bed and rustic log furniture, set right by the water. Includes a kitchenette, dual-burner stovetop and a wall-mounted electric fireplace.",
+    amenities: [
+      ...BASE,
+      "Kitchenette",
+      "Dual-burner stovetop",
+      "Wall-mounted electric fireplace",
+      "Smart TV with Roku",
+    ],
+    images: ["43", "44", "45", "46", "47", "48"],
   },
   {
     slug: "premium-two-full",
     name: "Premium Lakefront Room with Two Full Beds",
     category: "lakefront",
     bedConfiguration: "Two full beds",
+    maxGuests: 4,
     view: "Lakefront",
+    kitchenette: true,
+    fireplace: true,
     shortDescription:
-      "A lakefront room with two full beds and rustic log furnishings — room to spread out, steps from the water.",
-    amenities: [...SHARED_ROOM_AMENITIES],
-    images: ["42", "44"],
+      "A lakefront room with two full-size beds and rustic log furniture — room to spread out by the water. Includes a kitchenette, dual-burner stovetop and a wall-mounted electric fireplace.",
+    amenities: [
+      ...BASE,
+      "Kitchenette",
+      "Dual-burner stovetop",
+      "Wall-mounted electric fireplace",
+      "Smart TV with Roku",
+    ],
+    images: ["36", "37", "38", "39", "40", "41"],
   },
   {
-    slug: "presidential-honeymoon-suite",
-    name: "Presidential / Honeymoon Suite",
+    slug: "honeymoon-family-suite",
+    name: "Honeymoon / Family Suite",
     category: "lakefront",
+    maxGuests: 4,
     view: "Lakefront",
+    kitchenette: true,
+    fireplace: true,
     shortDescription:
-      "Our lakefront suite — the most spacious way to stay beside Van Norman Lake. Contact the inn for current details.",
-    amenities: ["Lakefront suite"],
-    images: ["28", "30", "46"],
+      "Our most accommodating lakefront suite, filled with rustic log furniture. Features a full kitchen, an in-unit washer and dryer, and a large-screen TV above a fireplace.",
+    amenities: [
+      ...BASE,
+      "Full kitchen",
+      "Stove",
+      "In-unit washer & dryer",
+      "Wall-mounted electric fireplace",
+      "Large-screen Smart TV with Roku",
+    ],
+    images: ["23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"],
   },
 ];
 

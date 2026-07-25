@@ -24,7 +24,7 @@ export default function RoomsPage() {
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
         <RoomFilters rooms={rooms} />
         <p className="mt-10 text-sm text-on-surface-variant">
-          Photos are representative of our rooms. Exact room features are confirmed at booking.
+          Room features and availability are confirmed at the time of booking.
         </p>
       </section>
     </>

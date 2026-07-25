@@ -51,7 +51,7 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
             >
               <Image
                 src={`/images/gallery/${n}.jpg`}
-                alt={`Representative photo of the ${room.name} at Olde Mill Inn of Clarkston`}
+                alt={`The ${room.name} at Olde Mill Inn of Clarkston`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
@@ -84,6 +84,11 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
                 <Icon name="king_bed" className="text-primary" /> {room.bedConfiguration}
               </li>
             ) : null}
+            {room.maxGuests ? (
+              <li className="flex items-center gap-2 text-on-surface-variant">
+                <Icon name="group" className="text-primary" /> Sleeps up to {room.maxGuests}
+              </li>
+            ) : null}
             {room.amenities.map((a) => (
               <li key={a} className="flex items-center gap-2 text-on-surface-variant">
                 <Icon name="check_circle" className="text-primary text-base" /> {a}
@@ -92,7 +97,7 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
           </ul>
 
           <p className="text-sm text-on-surface-variant border-t border-outline-variant/30 pt-4">
-            Photos are representative of our rooms. See our{" "}
+            See our{" "}
             <Link href="/plan-your-stay" className="text-primary underline underline-offset-2">
               policies and FAQs
             </Link>{" "}
