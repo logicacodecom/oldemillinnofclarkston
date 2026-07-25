@@ -50,3 +50,15 @@ public site until confirmed.
 - [ ] `NEXT_PUBLIC_GA_ID` — analytics (events already emitted).
 - [ ] Old-URL redirects if replacing the current live site (`next.config.mjs`).
 - [ ] Legal review of Privacy & Accessibility drafts.
+
+## Notes (decisions on record — no action needed)
+- **Room display names are intentionally shortened** vs. the longer Cloudbeds
+  names; each still maps 1:1 to the same room. Kept as-is for readability.
+  If booking-flow name consistency is ever preferred, align these:
+  | Site | Cloudbeds |
+  |---|---|
+  | Standard Full | Standard Full with Access to lake & Kayaks |
+  | Deluxe Queen | Deluxe Queen with Lake Access to lake & Kayaks |
+  | Premium Queen | Premium Lakefront room with Queen bed |
+  | Premium Lakefront Room with Two Full Beds | Premium Lakefront room with 2 Full Beds |
+  | Honeymoon / Family Suite | Premium Lakefront Honeymoon/Family Suite |
