@@ -41,7 +41,11 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 h-20 transition-colors duration-300 ${
-        light ? "bg-transparent" : "bg-background/95 backdrop-blur shadow-sm"
+        menuOpen
+          ? "bg-background shadow-sm" // no backdrop-filter while open, else the fixed menu gets clamped to the header
+          : light
+            ? "bg-transparent"
+            : "bg-background/95 backdrop-blur shadow-sm"
       }`}
     >
       <div className="h-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
