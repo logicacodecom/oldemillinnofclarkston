@@ -56,18 +56,18 @@ export function Header() {
           />
           <span className="flex flex-col items-center leading-none">
             <span
-              className={`font-script text-[34px] leading-[1.1] ${
+              className={`font-script text-[26px] sm:text-[32px] leading-[1.1] whitespace-nowrap ${
                 light ? "text-surface-white" : "text-primary"
               }`}
             >
-              Olde Mill Inn
+              The Olde Mill Inn
             </span>
             <span
-              className={`font-label-lg text-[11px] uppercase tracking-[0.18em] mt-1 ${
+              className={`font-label-lg text-[10px] sm:text-[11px] uppercase tracking-[0.18em] mt-1 whitespace-nowrap ${
                 light ? "text-surface-white/85" : "text-on-surface-variant"
               }`}
             >
-              Clarkston South
+              of Clarkston South
             </span>
           </span>
         </Link>
