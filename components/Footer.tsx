@@ -127,8 +127,20 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="max-w-container-max-width mx-auto mt-12 pt-8 border-t border-on-primary-container/30 text-sm text-secondary-fixed-dim">
-        © {year} {property.name}. {addressLine}.
+      <div className="max-w-container-max-width mx-auto mt-12 pt-8 border-t border-on-primary-container/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-secondary-fixed-dim">
+        <p>© {year} {property.name}. {addressLine}.</p>
+        <p>
+          Website delivered by our technology partner,{" "}
+          <a
+            href="https://www.logicacode.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-secondary-fixed hover:text-surface-white underline underline-offset-2 transition-colors"
+          >
+            logicacode
+          </a>
+          .
+        </p>
       </div>
     </footer>
   );
