@@ -48,7 +48,9 @@ export async function POST(request: Request) {
         headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
         body: JSON.stringify({
           from,
-          to: [property.email],
+          // CONTACT_TO overrides the recipient (used while the sending domain is
+          // still being verified in Resend). Falls back to the property email.
+          to: [process.env.CONTACT_TO || property.email],
           reply_to: email,
           subject: `Website inquiry — ${name}`,
           text,
