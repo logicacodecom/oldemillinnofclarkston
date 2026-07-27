@@ -7,7 +7,6 @@ import { roomByCloudbedsId } from "./rooms";
 
 const ENDPOINT = "https://api.cloudbeds.com/api/v1.3/getAvailableRoomTypes";
 const DAY = 86_400_000;
-const isoDay = (d: Date) => d.toISOString().slice(0, 10);
 
 export type AvailRoom = {
   roomTypeID: string;
@@ -63,33 +62,4 @@ export async function getAvailability(opts: {
   });
   rooms.sort((a, b) => Number(b.available > 0) - Number(a.available > 0) || a.ratePerNight - b.ratePerNight);
   return { configured: true, currency, nights, rooms };
-}
-
-// Indicative "from" nightly rate per room, cached ~1h. Samples several future
-// nights (spread across different weekdays) and keeps the lowest available rate
-// per room — so a single sold-out night can't blank out the prices. A room only
-// lacks a "from" price if it's unavailable on ALL sampled nights. Never throws.
-const FROM_RATE_OFFSETS = [30, 41, 52]; // days out; 11-day spacing => varied weekdays
-
-export async function getFromRates(): Promise<{ currency: string; bySlug: Record<string, number> }> {
-  const bySlug: Record<string, number> = {};
-  let currency = "$";
-  await Promise.all(
-    FROM_RATE_OFFSETS.map(async (off) => {
-      try {
-        const checkin = isoDay(new Date(Date.now() + off * DAY));
-        const checkout = isoDay(new Date(Date.now() + (off + 1) * DAY));
-        const r = await getAvailability({ checkin, checkout, revalidate: 3600 });
-        if (!r.configured) return;
-        currency = r.currency;
-        for (const room of r.rooms) {
-          if (!room.slug || room.available <= 0) continue;
-          bySlug[room.slug] = Math.min(bySlug[room.slug] ?? Infinity, room.ratePerNight);
-        }
-      } catch {
-        /* ignore this window; others may still return rates */
-      }
-    })
-  );
-  return { currency, bySlug };
 }
