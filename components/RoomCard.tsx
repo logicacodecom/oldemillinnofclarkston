@@ -7,15 +7,7 @@ import { Icon } from "./Icon";
 
 // Neo room card: white surface, 16px radius, ambient shadow, image on top.
 // No fictional price or occupancy is shown (§17) — the CTA is "Check Availability".
-export function RoomCard({
-  room,
-  fromRate,
-  currency = "$",
-}: {
-  room: Room;
-  fromRate?: number;
-  currency?: string;
-}) {
+export function RoomCard({ room }: { room: Room }) {
   const isLakefront = room.category === "lakefront";
   return (
     <article className="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 border border-outline-variant/10 flex flex-col">
@@ -54,16 +46,6 @@ export function RoomCard({
             {isLakefront ? "Lakefront" : "Off-water"}
           </span>
         </div>
-        {fromRate ? (
-          <p className="mb-4 text-on-surface-variant text-sm">
-            from{" "}
-            <span className="font-headline-md text-headline-md text-primary">
-              {currency}
-              {fromRate}
-            </span>{" "}
-            / night
-          </p>
-        ) : null}
         <div className="flex flex-col gap-3">
           <Link
             href={`/rooms/${room.slug}`}

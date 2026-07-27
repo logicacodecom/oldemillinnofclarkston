@@ -45,12 +45,17 @@ export type GalleryPhoto = {
   categoryId: string;
 };
 
+// Photos intentionally not shown anywhere on the site.
+const EXCLUDE = new Set([15, 20, 22]);
+
 export const galleryPhotos: GalleryPhoto[] = galleryCategories.flatMap((cat) =>
-  cat.numbers.map((n) => ({
-    src: `/images/gallery/${String(n).padStart(2, "0")}.jpg`,
-    alt: cat.alt,
-    categoryId: cat.id,
-  }))
+  cat.numbers
+    .filter((n) => !EXCLUDE.has(n))
+    .map((n) => ({
+      src: `/images/gallery/${String(n).padStart(2, "0")}.jpg`,
+      alt: cat.alt,
+      categoryId: cat.id,
+    }))
 );
 
 // A few hand-picked, confidently-identified images for feature placements.

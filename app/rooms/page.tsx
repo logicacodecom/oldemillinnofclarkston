@@ -4,7 +4,6 @@ import { RoomFilters } from "@/components/RoomFilters";
 import { AvailabilityWidget } from "@/components/AvailabilityWidget";
 import { rooms } from "@/lib/rooms";
 import { featured } from "@/lib/gallery";
-import { getFromRates } from "@/lib/cloudbeds";
 
 export const metadata: Metadata = {
   title: "Rooms — Lakefront and Off-Water",
@@ -13,8 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/rooms" },
 };
 
-export default async function RoomsPage() {
-  const { currency, bySlug } = await getFromRates();
+export default function RoomsPage() {
   return (
     <>
       <PageHero
@@ -29,7 +27,7 @@ export default async function RoomsPage() {
         <AvailabilityWidget />
       </section>
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-        <RoomFilters rooms={rooms} fromRates={bySlug} currency={currency} />
+        <RoomFilters rooms={rooms} />
         <p className="mt-10 text-sm text-on-surface-variant">
           Room features and availability are confirmed at the time of booking.
         </p>

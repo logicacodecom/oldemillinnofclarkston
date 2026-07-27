@@ -153,7 +153,7 @@ export default async function RoomDetailPage({ params }: { params: { slug: strin
         <h2 className="font-headline-lg text-headline-lg text-primary mb-8">You might also like</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {relatedFallback.map((r) => (
-            <RoomCard key={r.slug} room={r} fromRate={bySlug[r.slug]} currency={currency} />
+            <RoomCard key={r.slug} room={r} />
           ))}
         </div>
       </section>
