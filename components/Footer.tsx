@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { SocialLinks } from "./SocialLinks";
 import { property, addressLine, directionsUrl } from "@/lib/property";
 import { mainNav, legalNav } from "@/lib/nav";
 import { EVENTS } from "@/lib/analytics";
@@ -26,6 +27,7 @@ export function Footer() {
           <p className="text-sm text-secondary-fixed-dim max-w-xs leading-relaxed">
             Independent, family-operated lakefront lodging on {property.lake} in Clarkston, Michigan.
           </p>
+          <SocialLinks className="mt-6" />
         </div>
 
         <div>
