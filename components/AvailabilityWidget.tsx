@@ -25,7 +25,12 @@ type Result = {
   error?: string;
 };
 
-const iso = (d: Date) => d.toISOString().slice(0, 10);
+const iso = (d: Date) => {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
 const field =
   "w-full rounded-lg border border-outline-variant bg-surface-white px-3 py-2.5 text-on-surface focus:border-primary focus:ring-0";
 const labelCls = "block text-label-md text-label-md uppercase tracking-wider text-on-surface-variant mb-1";
@@ -49,7 +54,8 @@ export function AvailabilityWidget() {
   // Keep checkout after checkin.
   useEffect(() => {
     if (checkin && checkout && checkout <= checkin) {
-      setCheckout(iso(new Date(Date.parse(checkin) + 86_400_000)));
+      const [y, m, d] = checkin.split("-").map(Number);
+      setCheckout(iso(new Date(y, m - 1, d + 1)));
     }
   }, [checkin, checkout]);
 
