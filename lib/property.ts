@@ -36,6 +36,9 @@ export const property = {
     latitude: 42.70349503,
     longitude: -83.40392303,
   },
+  // IANA timezone of the property. Used to evaluate "today" for same-day
+  // bookings so late-evening local check-ins aren't rejected by a UTC server.
+  timezone: "America/Detroit",
   checkIn: "3:00 PM",
   checkOut: "11:00 AM",
   petsAllowed: false,

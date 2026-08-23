@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import { getAvailability } from "@/lib/cloudbeds";
+import { property } from "@/lib/property";
+
+// Today's date (YYYY-MM-DD) in the property's local timezone. The server runs
+// in UTC, so late-evening local check-ins would otherwise be read as "past."
+const todayLocal = () =>
+  new Date().toLocaleDateString("en-CA", { timeZone: property.timezone });
 
 // Live availability + rates. Validates input, then delegates to the shared
 // Cloudbeds module. Responses are CDN-cached 5 min per date/guest combination.
@@ -21,9 +27,7 @@ export async function GET(req: Request) {
   if (nights < 1 || nights > 30) {
     return NextResponse.json({ error: "Choose a stay of 1–30 nights." }, { status: 400 });
   }
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  if (Date.parse(checkin) < today.getTime()) {
+  if (checkin < todayLocal()) {
     return NextResponse.json({ error: "Check-in can't be in the past." }, { status: 400 });
   }
 
