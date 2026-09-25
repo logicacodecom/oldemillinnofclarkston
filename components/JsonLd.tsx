@@ -1,5 +1,6 @@
 import { property, siteUrl, addressLine, bookingUrl } from "@/lib/property";
 import { rooms, type Room } from "@/lib/rooms";
+import { en } from "@/lib/dictionaries/en";
 
 const hotelId = `${siteUrl}/#hotel`;
 
@@ -64,7 +65,7 @@ export function hotelRoomJsonLd(room: Room) {
     "@type": "HotelRoom",
     name: room.name,
     url: `${siteUrl}/rooms/${room.slug}`,
-    description: room.metaDescription,
+    description: en.rooms[room.slug].metaDescription,
     image: room.images.map((n) => `${siteUrl}/images/gallery/${n}.jpg`),
     occupancy: room.maxGuests
       ? { "@type": "QuantitativeValue", maxValue: room.maxGuests }

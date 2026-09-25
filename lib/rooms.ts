@@ -5,18 +5,52 @@ import { bookingUrl } from "./property";
 // and photo assignments. Photos are OUR local shoot, mapped to each room using
 // the exact image assignments Cloudbeds uses.
 
+// Every amenity label used below. The dictionaries translate these (a missing
+// Spanish label fails the typecheck); JSON-LD and icons use the English label.
+export const AMENITIES = [
+  "Recently renovated",
+  "Rustic log furniture",
+  "Serta Perfect Sleeper mattress",
+  "Stand-up shower",
+  "Microwave",
+  "Small refrigerator",
+  "Cable TV",
+  "Free Wi-Fi",
+  "Air conditioning",
+  "Coffee maker",
+  "Hairdryer",
+  "Kitchenette",
+  "Wall-mounted electric fireplace",
+  "Smart TV with Roku",
+  "Dual-burner stovetop",
+  "Full kitchen",
+  "Stove",
+  "In-unit washer & dryer",
+  "Large-screen Smart TV with Roku",
+] as const;
+export type Amenity = (typeof AMENITIES)[number];
+
+export const BEDS = ["Full bed", "Queen bed", "Two full beds"] as const;
+export type Bed = (typeof BEDS)[number];
+
+export type RoomSlug =
+  | "standard-full"
+  | "deluxe-queen"
+  | "premium-queen"
+  | "premium-two-full"
+  | "honeymoon-family-suite";
+
+// Descriptions live in the dictionaries (lib/dictionaries), keyed by slug.
 export type Room = {
-  slug: string;
+  slug: RoomSlug;
   name: string;
   category: "off-water" | "lakefront";
-  shortDescription: string;
-  metaDescription: string;
-  bedConfiguration?: string;
+  bedConfiguration?: Bed;
   maxGuests?: number;
   kitchenette?: boolean;
   fireplace?: boolean;
   view?: string;
-  amenities: string[];
+  amenities: Amenity[];
   images: string[]; // our gallery numbers (see /public/images/gallery)
   bookingUrl?: string;
   rateFrom?: number; // never rendered publicly unless a verified live rate exists
@@ -24,7 +58,7 @@ export type Room = {
 };
 
 // Every room shares these (per the property description + Cloudbeds).
-const BASE = [
+const BASE: Amenity[] = [
   "Recently renovated",
   "Rustic log furniture",
   "Serta Perfect Sleeper mattress",
@@ -48,10 +82,6 @@ export const rooms: Room[] = [
     maxGuests: 2,
     kitchenette: false,
     fireplace: false,
-    shortDescription:
-      "An off-water room with a full-size bed and warm rustic log furniture — a comfortable, practical base for your Clarkston stay, with access to the lake and kayaks.",
-    metaDescription:
-      "Off-water room in Clarkston, MI with a full bed and rustic log furniture. Includes lake access and complimentary kayaks.",
     amenities: [...BASE],
     images: ["09", "10", "11", "12", "13", "14"],
   },
@@ -64,10 +94,6 @@ export const rooms: Room[] = [
     maxGuests: 2,
     kitchenette: true,
     fireplace: true,
-    shortDescription:
-      "An off-water room with a queen bed and rustic log furniture, featuring a wall-mounted electric fireplace and a kitchenette. Includes lake access and kayaks.",
-    metaDescription:
-      "Off-water queen room in Clarkston, MI with a kitchenette, wall-mounted fireplace and rustic log furniture. Includes lake access.",
     amenities: [...BASE, "Kitchenette", "Wall-mounted electric fireplace", "Smart TV with Roku"],
     images: ["16", "17", "18", "19", "21"],
   },
@@ -81,10 +107,6 @@ export const rooms: Room[] = [
     view: "Lakefront",
     kitchenette: true,
     fireplace: true,
-    shortDescription:
-      "A lakefront room with a queen bed and rustic log furniture, set right by the water. Includes a kitchenette, dual-burner stovetop and a wall-mounted electric fireplace.",
-    metaDescription:
-      "Lakefront queen room in Clarkston, MI with a kitchenette, dual-burner stovetop and fireplace, set right on Van Norman Lake.",
     amenities: [
       ...BASE,
       "Kitchenette",
@@ -104,10 +126,6 @@ export const rooms: Room[] = [
     view: "Lakefront",
     kitchenette: true,
     fireplace: true,
-    shortDescription:
-      "A lakefront room with two full-size beds and rustic log furniture — room to spread out by the water. Includes a kitchenette, dual-burner stovetop and a wall-mounted electric fireplace.",
-    metaDescription:
-      "Lakefront room in Clarkston, MI with two full beds, sleeping up to four, a kitchenette, stovetop and fireplace.",
     amenities: [
       ...BASE,
       "Kitchenette",
@@ -126,10 +144,6 @@ export const rooms: Room[] = [
     view: "Lakefront",
     kitchenette: true,
     fireplace: true,
-    shortDescription:
-      "Our most accommodating lakefront suite, filled with rustic log furniture. Features a full kitchen, an in-unit washer and dryer, and a large-screen TV above a fireplace.",
-    metaDescription:
-      "Lakefront suite in Clarkston, MI with a full kitchen, in-unit washer/dryer and fireplace, sleeping up to four guests.",
     amenities: [
       ...BASE,
       "Full kitchen",
@@ -148,7 +162,7 @@ for (const room of rooms) {
   room.bookingUrl ??= bookingUrl({ roomTypeID: room.cloudbedsRoomTypeID });
 }
 
-export const roomsBySlug = new Map(rooms.map((r) => [r.slug, r]));
+export const roomsBySlug = new Map<string, Room>(rooms.map((r) => [r.slug, r]));
 export const roomByCloudbedsId = new Map(
   rooms.filter((r) => r.cloudbedsRoomTypeID).map((r) => [r.cloudbedsRoomTypeID as string, r])
 );

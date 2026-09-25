@@ -49,6 +49,14 @@ export const property = {
   reviews: [] as Review[],
 } as const;
 
+// Sister property. Its own domain still points to the old site, so link the new one.
+export const northLocation = {
+  name: "The Olde Mill Inn of Clarkston North",
+  short: "Clarkston North",
+  address: "6853 Dixie Hwy, Clarkston, MI 48346",
+  url: "https://oldemillinnnorth.vercel.app/",
+} as const;
+
 export const addressLine = `${property.address.street}, ${property.address.city}, ${property.address.state} ${property.address.postalCode}`;
 
 // Canonical site origin (no trailing slash) for metadata/canonical/sitemap.

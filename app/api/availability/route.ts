@@ -21,14 +21,14 @@ export async function GET(req: Request) {
   const children = Math.min(Math.max(parseInt(q.get("children") ?? "0", 10) || 0, 0), 10);
 
   if (!isDate(checkin) || !isDate(checkout)) {
-    return NextResponse.json({ error: "Please choose valid dates." }, { status: 400 });
+    return NextResponse.json({ error: "Please choose valid dates.", code: "dates" }, { status: 400 });
   }
   const nights = Math.round((Date.parse(checkout) - Date.parse(checkin)) / DAY);
   if (nights < 1 || nights > 30) {
-    return NextResponse.json({ error: "Choose a stay of 1–30 nights." }, { status: 400 });
+    return NextResponse.json({ error: "Choose a stay of 1–30 nights.", code: "range" }, { status: 400 });
   }
   if (checkin < todayLocal()) {
-    return NextResponse.json({ error: "Check-in can't be in the past." }, { status: 400 });
+    return NextResponse.json({ error: "Check-in can't be in the past.", code: "past" }, { status: 400 });
   }
 
   try {
@@ -39,6 +39,6 @@ export async function GET(req: Request) {
       { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" } }
     );
   } catch {
-    return NextResponse.json({ error: "Availability is temporarily unavailable." }, { status: 502 });
+    return NextResponse.json({ error: "Availability is temporarily unavailable.", code: "unavailable" }, { status: 502 });
   }
 }

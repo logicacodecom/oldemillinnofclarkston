@@ -7,55 +7,25 @@
 // use broad, defensible buckets and category-level alt text rather than
 // asserting a specific room type for any single photo.
 
-export type GalleryCategory = {
-  id: string;
-  label: string;
-  alt: string; // category-level alt text applied to each photo in the bucket
-  numbers: number[];
-};
 
 function range(start: number, end: number): number[] {
   return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
-export const galleryCategories: GalleryCategory[] = [
-  {
-    id: "exterior",
-    label: "Exterior & Grounds",
-    alt: "Exterior and grounds at Olde Mill Inn of Clarkston",
-    numbers: range(1, 8),
-  },
-  {
-    id: "rooms",
-    label: "Rooms & Interiors",
-    alt: "Guest room interior at Olde Mill Inn of Clarkston",
-    numbers: range(9, 48),
-  },
-  {
-    id: "lakefront",
-    label: "Lakefront & Deck",
-    alt: "Lakefront setting and covered deck at Olde Mill Inn of Clarkston",
-    numbers: range(49, 69),
-  },
-];
-
-export type GalleryPhoto = {
-  src: string;
-  alt: string;
-  categoryId: string;
-};
+// Label and category-level alt text come from the dictionaries (gallery.categories).
+export const galleryCategories = [
+  { id: "exterior", numbers: range(1, 8) },
+  { id: "rooms", numbers: range(9, 48) },
+  { id: "lakefront", numbers: range(49, 69) },
+] as const;
 
 // Photos intentionally not shown anywhere on the site.
 const EXCLUDE = new Set([15, 20, 22]);
 
-export const galleryPhotos: GalleryPhoto[] = galleryCategories.flatMap((cat) =>
+export const galleryPhotos = galleryCategories.flatMap((cat) =>
   cat.numbers
     .filter((n) => !EXCLUDE.has(n))
-    .map((n) => ({
-      src: `/images/gallery/${String(n).padStart(2, "0")}.jpg`,
-      alt: cat.alt,
-      categoryId: cat.id,
-    }))
+    .map((n) => ({ src: `/images/gallery/${String(n).padStart(2, "0")}.jpg`, categoryId: cat.id }))
 );
 
 // A few hand-picked, confidently-identified images for feature placements.

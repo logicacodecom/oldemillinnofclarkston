@@ -2,11 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { SocialLinks } from "./SocialLinks";
 import { property, addressLine, directionsUrl } from "@/lib/property";
-import { mainNav, legalNav } from "@/lib/nav";
+import { getDict, localePath, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
 import { Icon } from "./Icon";
 
-export function Footer() {
+export function Footer({ lang }: { lang: Lang }) {
+  const t = getDict(lang);
   const year = new Date().getFullYear();
   return (
     <footer className="bg-primary text-on-primary w-full py-section-gap px-margin-mobile md:px-margin-desktop">
@@ -25,21 +26,21 @@ export function Footer() {
             </span>
           </div>
           <p className="text-sm text-secondary-fixed-dim max-w-xs leading-relaxed">
-            Independent, family-operated lakefront lodging on {property.lake} in Clarkston, Michigan.
+            {t.footer.tagline}
           </p>
-          <SocialLinks className="mt-6" />
+          <SocialLinks className="mt-6" ariaLabel={t.social.aria} />
         </div>
 
         <div>
           <h2 className="font-label-lg text-label-lg text-secondary-fixed mb-6 uppercase tracking-widest">
-            Explore
+            {t.footer.explore}
           </h2>
           <ul className="space-y-3">
-            {mainNav.map((link) => (
+            {t.nav.main.map((link) => (
               <li key={link.href}>
                 <Link
                   className="text-secondary-fixed-dim hover:text-surface-white transition-colors"
-                  href={link.href}
+                  href={localePath(lang, link.href)}
                 >
                   {link.label}
                 </Link>
@@ -50,7 +51,7 @@ export function Footer() {
 
         <div>
           <h2 className="font-label-lg text-label-lg text-secondary-fixed mb-6 uppercase tracking-widest">
-            Contact
+            {t.footer.contact}
           </h2>
           <address className="not-italic space-y-3 text-secondary-fixed-dim">
             <p>
@@ -64,7 +65,7 @@ export function Footer() {
                 href={property.phone.href}
                 data-analytics-event={EVENTS.phoneClick}
               >
-                Call {property.phone.display}
+                {t.common.callNumber}
               </a>
             </p>
             <p>
@@ -73,7 +74,7 @@ export function Footer() {
                 href={property.text.href}
                 data-analytics-event={EVENTS.textClick}
               >
-                Text {property.text.display}
+                {t.common.textNumber}
               </a>
             </p>
             <p>
@@ -90,7 +91,7 @@ export function Footer() {
 
         <div>
           <h2 className="font-label-lg text-label-lg text-secondary-fixed mb-6 uppercase tracking-widest">
-            Plan
+            {t.footer.plan}
           </h2>
           <ul className="space-y-3">
             <li>
@@ -101,7 +102,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 data-analytics-event={EVENTS.bookingClick}
               >
-                Book Now <Icon name="open_in_new" className="text-sm" />
+                {t.common.bookNow} <Icon name="open_in_new" className="text-sm" />
               </a>
             </li>
             <li>
@@ -112,14 +113,14 @@ export function Footer() {
                 rel="noopener noreferrer"
                 data-analytics-event={EVENTS.directionsClick}
               >
-                Get Directions <Icon name="explore" className="text-sm" />
+                {t.common.getDirections} <Icon name="explore" className="text-sm" />
               </a>
             </li>
-            {legalNav.map((link) => (
+            {t.nav.legal.map((link) => (
               <li key={link.href}>
                 <Link
                   className="text-secondary-fixed-dim hover:text-surface-white transition-colors"
-                  href={link.href}
+                  href={localePath(lang, link.href)}
                 >
                   {link.label}
                 </Link>
@@ -132,7 +133,7 @@ export function Footer() {
       <div className="max-w-container-max-width mx-auto mt-12 pt-8 border-t border-on-primary-container/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-secondary-fixed-dim">
         <p>© {year} {property.name}. {addressLine}.</p>
         <p>
-          Website delivered by our technology partner,{" "}
+          {t.footer.credit}{" "}
           <a
             href="https://www.logicacode.com"
             target="_blank"

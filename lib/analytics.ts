@@ -12,6 +12,7 @@ export const EVENTS = {
   pineKnobCtaClick: "pine_knob_cta_click",
   contactFormSubmit: "contact_form_submit",
   emailClick: "email_click",
+  northSiteClick: "north_site_click",
 } as const;
 
 export type AnalyticsEvent = (typeof EVENTS)[keyof typeof EVENTS];

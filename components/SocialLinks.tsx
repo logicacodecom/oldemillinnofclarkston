@@ -37,7 +37,13 @@ const links = [
   }
 ] as const;
 
-export function SocialLinks({ className = "" }: { className?: string }) {
+export function SocialLinks({
+  className = "",
+  ariaLabel,
+}: {
+  className?: string;
+  ariaLabel: (network: string) => string;
+}) {
   return (
     <ul className={`flex flex-wrap gap-3 ${className}`}>
       {links.map((l) => (
@@ -46,7 +52,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
             href={l.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`The Olde Mill Inn of Clarkston on ${l.network}`}
+            aria-label={ariaLabel(l.network)}
             data-analytics-event="social_click"
             data-analytics-network={l.icon}
             className="w-10 h-10 rounded-full border border-secondary-fixed-dim/50 flex items-center justify-center text-secondary-fixed-dim hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-colors"

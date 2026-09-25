@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { property } from "@/lib/property";
 import { EVENTS, track } from "@/lib/analytics";
+import type { Dict } from "@/lib/dictionaries/en";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -10,7 +11,7 @@ const field =
   "w-full rounded-lg border border-outline-variant bg-surface-white px-4 py-3 text-on-surface focus:border-primary focus:ring-0";
 const labelCls = "block font-label-md text-label-md uppercase tracking-wide text-on-surface-variant mb-1";
 
-export function ContactForm() {
+export function ContactForm({ t }: { t: Dict["form"] }) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -36,9 +37,9 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div role="status" className="bg-tertiary-container text-on-tertiary-container rounded-2xl p-8">
-        <p className="font-headline-md text-headline-md mb-2">Thanks — your message is on its way.</p>
+        <p className="font-headline-md text-headline-md mb-2">{t.successTitle}</p>
         <p>
-          We&apos;ll follow up as soon as we can. For anything time-sensitive, please call{" "}
+          {t.successPrefix}{" "}
           <a className="underline" href={property.phone.href}>
             {property.phone.display}
           </a>
@@ -51,47 +52,45 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <p className="rounded-lg bg-surface-container-low p-4 text-sm text-on-surface-variant">
-        Submitting this form does not confirm a reservation. For current availability, use the booking
-        system or call the inn.
+        {t.intro}
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelCls} htmlFor="name">Name</label>
+          <label className={labelCls} htmlFor="name">{t.name}</label>
           <input className={field} id="name" name="name" type="text" required autoComplete="name" />
         </div>
         <div>
-          <label className={labelCls} htmlFor="email">Email</label>
+          <label className={labelCls} htmlFor="email">{t.email}</label>
           <input className={field} id="email" name="email" type="email" required autoComplete="email" />
         </div>
         <div className="sm:col-span-2">
-          <label className={labelCls} htmlFor="phone">Phone (optional)</label>
+          <label className={labelCls} htmlFor="phone">{t.phone}</label>
           <input className={field} id="phone" name="phone" type="tel" autoComplete="tel" />
         </div>
         <div>
-          <label className={labelCls} htmlFor="arrival">Arrival (optional)</label>
+          <label className={labelCls} htmlFor="arrival">{t.arrival}</label>
           <input className={field} id="arrival" name="arrival" type="date" />
         </div>
         <div>
-          <label className={labelCls} htmlFor="departure">Departure (optional)</label>
+          <label className={labelCls} htmlFor="departure">{t.departure}</label>
           <input className={field} id="departure" name="departure" type="date" />
         </div>
       </div>
 
       <div>
-        <label className={labelCls} htmlFor="message">Message</label>
+        <label className={labelCls} htmlFor="message">{t.message}</label>
         <textarea className={field} id="message" name="message" rows={5} required />
       </div>
 
       <p className="text-xs text-on-surface-variant">
-        By submitting, you agree we may use the details above to respond to your inquiry. We don&apos;t
-        sell your information.
+        {t.consent}
       </p>
 
       {status === "error" && (
         <p role="alert" className="rounded-lg bg-error-container text-on-error-container p-4 text-sm">
-          Sorry — we couldn&apos;t send your message right now. Please call{" "}
-          <a className="underline" href={property.phone.href}>{property.phone.display}</a> or text{" "}
+          {t.errorPrefix}{" "}
+          <a className="underline" href={property.phone.href}>{property.phone.display}</a> {t.errorOr}{" "}
           <a className="underline" href={property.text.href}>{property.text.display}</a>.
         </p>
       )}
@@ -101,7 +100,7 @@ export function ContactForm() {
         disabled={status === "submitting"}
         className="bg-primary text-on-primary px-8 py-4 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-colors disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending…" : "Send message"}
+        {status === "submitting" ? t.sending : t.submit}
       </button>
     </form>
   );

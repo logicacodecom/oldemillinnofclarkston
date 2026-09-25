@@ -1,41 +1,38 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Icon } from "@/components/Icon";
-import { attractionsByCategory } from "@/lib/attractions";
 import { featured } from "@/lib/gallery";
+import { getDict, pageMetadata, type Lang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Things to Do Near Clarkston, MI",
-  description:
-    "Concerts at Pine Knob, nearby skiing, shopping at Great Lakes Crossing and local dining in Clarkston — all a short drive from Olde Mill Inn.",
-  alternates: { canonical: "/things-to-do" },
-};
+type Props = { params: { lang: Lang } };
 
-const sections = [
-  { id: "concerts", title: "Concerts & Entertainment", icon: "music_note", items: attractionsByCategory.concerts },
-  { id: "skiing", title: "Skiing & Winter Activities", icon: "downhill_skiing", items: attractionsByCategory.skiing },
-  { id: "shopping", title: "Shopping", icon: "shopping_bag", items: attractionsByCategory.shopping },
-  {
-    id: "local",
-    title: "Local Dining & Clarkston",
-    icon: "restaurant",
-    items: [...attractionsByCategory.local, ...attractionsByCategory.dining],
-  },
-];
+export function generateMetadata({ params }: Props): Metadata {
+  return pageMetadata(params.lang, "/things-to-do", getDict(params.lang).meta.thingsToDo);
+}
 
 function directionsTo(query: string) {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 }
 
-export default function ThingsToDoPage() {
+export default function ThingsToDoPage({ params }: Props) {
+  const t = getDict(params.lang);
+  const td = t.thingsToDo;
+  const inCategory = (...cats: string[]) => t.attractions.filter((a) => cats.includes(a.category));
+  const sections = [
+    { id: "concerts", title: td.sections.concerts, icon: "music_note", items: inCategory("concerts") },
+    { id: "skiing", title: td.sections.skiing, icon: "downhill_skiing", items: inCategory("skiing") },
+    { id: "shopping", title: td.sections.shopping, icon: "shopping_bag", items: inCategory("shopping") },
+    { id: "local", title: td.sections.local, icon: "restaurant", items: inCategory("local", "dining") },
+  ];
+
   return (
     <>
       <PageHero
-        eyebrow="Explore the area"
-        title="Things to Do"
-        subtitle="From concerts and skiing to shopping and local dining, Clarkston's best is a short drive from the inn. Distances are approximate."
+        eyebrow={td.eyebrow}
+        title={td.title}
+        subtitle={td.subtitle}
         image={featured.streetExterior}
-        imageAlt="Street view of Olde Mill Inn of Clarkston"
+        imageAlt={td.heroAlt}
       />
 
       <div className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop space-y-16">
@@ -53,7 +50,7 @@ export default function ThingsToDoPage() {
                   <div className="flex items-start justify-between mb-2 gap-2">
                     <h3 className="font-headline-md text-lg text-on-surface">{a.name}</h3>
                     {a.approxMiles ? (
-                      <span className="text-sm text-on-surface-variant whitespace-nowrap">≈{a.approxMiles} mi</span>
+                      <span className="text-sm text-on-surface-variant whitespace-nowrap">{t.common.miles(a.approxMiles)}</span>
                     ) : null}
                   </div>
                   <p className="text-on-surface-variant text-sm mb-4 flex-1">{a.description}</p>
@@ -65,7 +62,7 @@ export default function ThingsToDoPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-primary font-label-lg text-label-lg hover:underline underline-offset-4 mt-auto"
                   >
-                    Directions <Icon name="explore" className="text-base" />
+                    {t.common.directions} <Icon name="explore" className="text-base" />
                   </a>
                 </div>
               ))}

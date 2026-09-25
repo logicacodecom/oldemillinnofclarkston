@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bookingUrl } from "@/lib/property";
 import { EVENTS, track } from "@/lib/analytics";
+import { localePath, type Lang } from "@/lib/i18n";
+import type { Dict } from "@/lib/dictionaries/en";
 import { Icon } from "./Icon";
 
 type Room = {
@@ -23,6 +25,7 @@ type Result = {
   checkout?: string;
   rooms?: Room[];
   error?: string;
+  code?: keyof Dict["availability"]["errors"];
 };
 
 const iso = (d: Date) => {
@@ -35,7 +38,9 @@ const field =
   "w-full rounded-lg border border-outline-variant bg-surface-white px-3 py-2.5 text-on-surface focus:border-primary focus:ring-0";
 const labelCls = "block text-label-md text-label-md uppercase tracking-wider text-on-surface-variant mb-1";
 
-export function AvailabilityWidget() {
+const fill = (s: string, n: number) => s.replace("{n}", String(n));
+
+export function AvailabilityWidget({ lang, t }: { lang: Lang; t: Dict["availability"] }) {
   const [today, setToday] = useState("");
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
@@ -64,7 +69,7 @@ export function AvailabilityWidget() {
     setError("");
     setResult(null);
     if (!checkin || !checkout || checkout <= checkin) {
-      setError("Please choose a check-out date after check-in.");
+      setError(t.errors.order);
       return;
     }
     setLoading(true);
@@ -72,10 +77,10 @@ export function AvailabilityWidget() {
     try {
       const r = await fetch(`/api/availability?checkin=${checkin}&checkout=${checkout}&adults=${adults}`);
       const data: Result = await r.json();
-      if (!r.ok) setError(data.error || "Something went wrong. Please try again.");
+      if (!r.ok) setError(t.errors[data.code ?? "generic"] ?? t.errors.generic);
       else setResult(data);
     } catch {
-      setError("Network error. Please try again, or book on our secure system.");
+      setError(t.errors.network);
     } finally {
       setLoading(false);
     }
@@ -88,20 +93,20 @@ export function AvailabilityWidget() {
     <div className="bg-surface-white rounded-2xl shadow-lg border border-outline-variant/30 p-6 md:p-8">
       <form onSubmit={search} className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
         <div className="col-span-1">
-          <label className={labelCls} htmlFor="av-checkin">Check-in</label>
+          <label className={labelCls} htmlFor="av-checkin">{t.checkin}</label>
           <input id="av-checkin" type="date" className={field} value={checkin} min={today}
             onChange={(e) => setCheckin(e.target.value)} />
         </div>
         <div className="col-span-1">
-          <label className={labelCls} htmlFor="av-checkout">Check-out</label>
+          <label className={labelCls} htmlFor="av-checkout">{t.checkout}</label>
           <input id="av-checkout" type="date" className={field} value={checkout} min={checkin || today}
             onChange={(e) => setCheckout(e.target.value)} />
         </div>
         <div className="col-span-1">
-          <label className={labelCls} htmlFor="av-adults">Guests</label>
+          <label className={labelCls} htmlFor="av-adults">{t.guests}</label>
           <select id="av-adults" className={field} value={adults} onChange={(e) => setAdults(Number(e.target.value))}>
             {[1, 2, 3, 4].map((n) => (
-              <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>
+              <option key={n} value={n}>{n} {n === 1 ? t.guest1 : t.guestN}</option>
             ))}
           </select>
         </div>
@@ -111,7 +116,7 @@ export function AvailabilityWidget() {
           data-analytics-event={EVENTS.availabilitySearch}
           className="col-span-2 md:col-span-1 inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-label-lg text-label-lg hover:bg-primary-container transition-colors disabled:opacity-60"
         >
-          {loading ? "Checking…" : "Check availability"}
+          {loading ? t.searching : t.search}
           {!loading && <Icon name="search" className="text-lg" />}
         </button>
       </form>
@@ -122,17 +127,17 @@ export function AvailabilityWidget() {
             {error}{" "}
             <a href={bookingUrl()} target="_blank" rel="noopener noreferrer"
               data-analytics-event={EVENTS.bookingClick} className="underline text-primary">
-              Book on our secure system
+              {t.bookSecure}
             </a>.
           </div>
         )}
 
         {result && result.configured === false && (
           <div className="text-on-surface-variant text-sm">
-            Live availability isn’t available right now.{" "}
+            {t.notConfigured}{" "}
             <a href={bookingUrl()} target="_blank" rel="noopener noreferrer"
               data-analytics-event={EVENTS.bookingClick} className="underline text-primary">
-              Check availability on our secure booking system
+              {t.notConfiguredLink}
             </a>.
           </div>
         )}
@@ -141,15 +146,15 @@ export function AvailabilityWidget() {
           <>
             <p className="text-sm text-on-surface-variant mb-4">
               {available.length > 0
-                ? `${result.nights} night${result.nights === 1 ? "" : "s"} · rates shown per night`
+                ? fill(result.nights === 1 ? t.night1 : t.nightN, result.nights ?? 0)
                 : ""}
             </p>
             {available.length === 0 ? (
               <div className="text-on-surface-variant text-sm">
-                No rooms available for those dates. Try different dates, or{" "}
+                {t.noRooms}{" "}
                 <a href={bookingUrl({ checkin: result.checkin, checkout: result.checkout, adults })} target="_blank" rel="noopener noreferrer"
                   data-analytics-event={EVENTS.bookingClick} className="underline text-primary">
-                  check our booking system
+                  {t.noRoomsLink}
                 </a>.
               </div>
             ) : (
@@ -159,20 +164,20 @@ export function AvailabilityWidget() {
                     <div className="min-w-0">
                       <p className="font-headline-md text-on-surface">
                         {room.slug ? (
-                          <Link href={`/rooms/${room.slug}`} className="hover:text-primary underline-offset-2 hover:underline">
+                          <Link href={localePath(lang, `/rooms/${room.slug}`)} className="hover:text-primary underline-offset-2 hover:underline">
                             {room.name}
                           </Link>
                         ) : room.name}
                       </p>
                       <p className="text-xs text-on-surface-variant mt-0.5">
-                        {room.category === "lakefront" ? "Lakefront" : "Off-water"}
-                        {room.available <= 3 ? ` · only ${room.available} left` : ""}
+                        {room.category === "lakefront" ? t.lakefront : t.offWater}
+                        {room.available <= 3 ? fill(t.onlyLeft, room.available) : ""}
                       </p>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <p className="font-headline-md text-primary leading-none">{cur}{room.ratePerNight}</p>
-                        <p className="text-[11px] text-on-surface-variant">/night · {cur}{room.rateTotal} total</p>
+                        <p className="text-[11px] text-on-surface-variant">{t.perNight} · {cur}{room.rateTotal} {t.total}</p>
                       </div>
                       <a
                         href={bookingUrl({
@@ -186,7 +191,7 @@ export function AvailabilityWidget() {
                         data-analytics-event={EVENTS.bookingClick}
                         className="bg-primary text-on-primary px-5 py-2.5 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-colors whitespace-nowrap"
                       >
-                        Book
+                        {t.book}
                       </a>
                     </div>
                   </li>
@@ -194,7 +199,7 @@ export function AvailabilityWidget() {
               </ul>
             )}
             <p className="mt-4 text-[11px] text-on-surface-variant">
-              Live rates from our booking system. Final price and taxes are confirmed at checkout.
+              {t.disclaimer}
             </p>
           </>
         )}

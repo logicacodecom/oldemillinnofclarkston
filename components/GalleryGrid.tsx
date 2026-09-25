@@ -2,22 +2,27 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import type { GalleryPhoto, GalleryCategory } from "@/lib/gallery";
+import type { Dict } from "@/lib/dictionaries/en";
+
+export type GalleryPhoto = { src: string; alt: string; categoryId: string };
+export type GalleryCategory = { id: string; label: string };
 import { Icon } from "./Icon";
 
 export function GalleryGrid({
   photos,
   categories,
+  t,
 }: {
   photos: GalleryPhoto[];
   categories: GalleryCategory[];
+  t: Dict["gallery"]["ui"];
 }) {
   const [cat, setCat] = useState("all");
   const [index, setIndex] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const lastTrigger = useRef<HTMLButtonElement | null>(null);
 
-  const tabs = [{ id: "all", label: "All" }, ...categories.map((c) => ({ id: c.id, label: c.label }))];
+  const tabs = [{ id: "all", label: t.all }, ...categories.map((c) => ({ id: c.id, label: c.label }))];
   const visible = cat === "all" ? photos : photos.filter((p) => p.categoryId === cat);
 
   const open = useCallback((i: number, el: HTMLButtonElement) => {
@@ -53,7 +58,7 @@ export function GalleryGrid({
 
   return (
     <div>
-      <div role="group" aria-label="Filter photos" className="flex flex-wrap gap-3 mb-8">
+      <div role="group" aria-label={t.filterAria} className="flex flex-wrap gap-3 mb-8">
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -78,7 +83,7 @@ export function GalleryGrid({
               type="button"
               onClick={(e) => open(i, e.currentTarget)}
               className="group relative block w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container"
-              aria-label={`${photo.alt} — view larger`}
+              aria-label={`${photo.alt} — ${t.viewLarger}`}
             >
               <Image
                 src={photo.src}
@@ -96,7 +101,7 @@ export function GalleryGrid({
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Photo viewer"
+          aria-label={t.viewerAria}
           className="fixed inset-0 z-[60] bg-black/90 flex items-center justify-center p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
@@ -106,7 +111,7 @@ export function GalleryGrid({
             ref={closeRef}
             type="button"
             onClick={close}
-            aria-label="Close photo viewer"
+            aria-label={t.close}
             className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20"
           >
             <Icon name="close" className="text-2xl" />
@@ -114,7 +119,7 @@ export function GalleryGrid({
           <button
             type="button"
             onClick={() => step(-1)}
-            aria-label="Previous photo"
+            aria-label={t.prev}
             className="absolute left-2 sm:left-6 w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20"
           >
             <Icon name="chevron_left" className="text-3xl" />
@@ -125,7 +130,7 @@ export function GalleryGrid({
           <button
             type="button"
             onClick={() => step(1)}
-            aria-label="Next photo"
+            aria-label={t.next}
             className="absolute right-2 sm:right-6 w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20"
           >
             <Icon name="chevron_right" className="text-3xl" />
