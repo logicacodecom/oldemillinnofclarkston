@@ -57,11 +57,23 @@ export const siteUrl = "https://www.oldemillinnofclarkston.com";
 // Opens Google Maps driving directions to the property.
 export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${property.geo.latitude},${property.geo.longitude}`;
 
-// Cloudbeds booking URL, optionally pre-filled with the guest's chosen dates.
-// (Passing live, user-selected dates is correct — unlike the old stale hardcoded ones.)
-export function bookingUrl(checkin?: string, checkout?: string): string {
-  if (checkin && checkout) {
-    return `${property.bookingUrl}&checkin=${checkin}&checkout=${checkout}`;
-  }
-  return property.bookingUrl;
+// Cloudbeds booking URL, optionally pre-filled with the guest's chosen dates,
+// party size, and a specific room type — so a guest who picked a room or ran
+// an availability search lands on that same room/dates instead of a blank
+// search (Cloudbeds ignores params it doesn't recognize, so this degrades
+// safely if a param isn't supported).
+export function bookingUrl(opts?: {
+  checkin?: string;
+  checkout?: string;
+  adults?: number;
+  roomTypeID?: string;
+}): string {
+  if (!opts) return property.bookingUrl;
+  const params = new URLSearchParams();
+  if (opts.checkin) params.set("checkin", opts.checkin);
+  if (opts.checkout) params.set("checkout", opts.checkout);
+  if (opts.adults) params.set("adults", String(opts.adults));
+  if (opts.roomTypeID) params.set("room_type_id", opts.roomTypeID);
+  const qs = params.toString();
+  return qs ? `${property.bookingUrl}&${qs}` : property.bookingUrl;
 }

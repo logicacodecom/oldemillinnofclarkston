@@ -6,6 +6,7 @@ import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { RoomCard } from "@/components/RoomCard";
 import { TrackView } from "@/components/TrackView";
+import { JsonLd, hotelRoomJsonLd } from "@/components/JsonLd";
 import { rooms, roomsBySlug, amenityIcon } from "@/lib/rooms";
 import { property } from "@/lib/property";
 import { EVENTS } from "@/lib/analytics";
@@ -17,10 +18,9 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const room = roomsBySlug.get(params.slug);
   if (!room) return {};
-  const cat = room.category === "lakefront" ? "Lakefront" : "Off-water";
   return {
-    title: `${room.name} — ${cat} Room`,
-    description: room.shortDescription,
+    title: room.name,
+    description: room.metaDescription,
     alternates: { canonical: `/rooms/${room.slug}` },
   };
 }
@@ -37,6 +37,7 @@ export default function RoomDetailPage({ params }: { params: { slug: string } })
 
   return (
     <article className="pb-section-gap">
+      <JsonLd data={hotelRoomJsonLd(room)} />
       <TrackView event={EVENTS.roomView} params={{ room: room.slug }} />
 
       {/* Image gallery */}

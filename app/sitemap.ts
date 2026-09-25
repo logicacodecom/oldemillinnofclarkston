@@ -2,25 +2,27 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/property";
 import { rooms } from "@/lib/rooms";
 
+// Last real content update per route (keep in sync when a page's content changes).
+const lastModified: Record<string, string> = {
+  "": "2026-08-21",
+  "/rooms": "2026-08-21",
+  "/lakefront-experience": "2026-08-21",
+  "/pine-knob": "2026-08-21",
+  "/things-to-do": "2026-08-21",
+  "/gallery": "2026-08-21",
+  "/plan-your-stay": "2026-08-21",
+  "/contact": "2026-08-21",
+  "/privacy": "2026-08-21",
+  "/accessibility": "2026-08-21",
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const routes = [
-    "",
-    "/rooms",
-    "/lakefront-experience",
-    "/pine-knob",
-    "/things-to-do",
-    "/gallery",
-    "/plan-your-stay",
-    "/contact",
-    "/privacy",
-    "/accessibility",
+    ...Object.keys(lastModified),
     ...rooms.map((r) => `/rooms/${r.slug}`),
   ];
   return routes.map((path) => ({
     url: `${siteUrl}${path}`,
-    lastModified: now,
-    changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : 0.7,
+    lastModified: lastModified[path] ?? "2026-08-21",
   }));
 }

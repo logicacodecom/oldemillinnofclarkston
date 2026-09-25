@@ -147,7 +147,7 @@ export function AvailabilityWidget() {
             {available.length === 0 ? (
               <div className="text-on-surface-variant text-sm">
                 No rooms available for those dates. Try different dates, or{" "}
-                <a href={bookingUrl(result.checkin, result.checkout)} target="_blank" rel="noopener noreferrer"
+                <a href={bookingUrl({ checkin: result.checkin, checkout: result.checkout, adults })} target="_blank" rel="noopener noreferrer"
                   data-analytics-event={EVENTS.bookingClick} className="underline text-primary">
                   check our booking system
                 </a>.
@@ -175,7 +175,12 @@ export function AvailabilityWidget() {
                         <p className="text-[11px] text-on-surface-variant">/night · {cur}{room.rateTotal} total</p>
                       </div>
                       <a
-                        href={bookingUrl(result.checkin, result.checkout)}
+                        href={bookingUrl({
+                          checkin: result.checkin,
+                          checkout: result.checkout,
+                          adults,
+                          roomTypeID: room.roomTypeID,
+                        })}
                         target="_blank"
                         rel="noopener noreferrer"
                         data-analytics-event={EVENTS.bookingClick}

@@ -1,13 +1,18 @@
-import { property, siteUrl, addressLine } from "@/lib/property";
+import { property, siteUrl, addressLine, bookingUrl } from "@/lib/property";
+import { rooms, type Room } from "@/lib/rooms";
+
+const hotelId = `${siteUrl}/#hotel`;
 
 // Accurate JSON-LD (§29). Only verified data — no aggregateRating, reviews,
 // review count, star rating, prices or unsupported accessibility attributes.
 export function lodgingJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
+    "@type": "Hotel",
+    "@id": hotelId,
     name: property.name,
     url: siteUrl,
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${property.geo.latitude},${property.geo.longitude}`,
     image: [
       `${siteUrl}/images/gallery/50.jpg`,
       `${siteUrl}/images/gallery/64.jpg`,
@@ -48,6 +53,34 @@ export function lodgingJsonLd() {
       "Cable television",
       "Air conditioning",
     ].map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true })),
+    containsPlace: rooms.map(hotelRoomJsonLd),
+  };
+}
+
+// One HotelRoom node per room type, linked to the Hotel via containsPlace above.
+// Reused standalone on room detail pages for stronger room-level rich results.
+export function hotelRoomJsonLd(room: Room) {
+  return {
+    "@type": "HotelRoom",
+    name: room.name,
+    url: `${siteUrl}/rooms/${room.slug}`,
+    description: room.metaDescription,
+    image: room.images.map((n) => `${siteUrl}/images/gallery/${n}.jpg`),
+    occupancy: room.maxGuests
+      ? { "@type": "QuantitativeValue", maxValue: room.maxGuests }
+      : undefined,
+    bed: room.bedConfiguration
+      ? { "@type": "BedDetails", typeOfBed: room.bedConfiguration }
+      : undefined,
+    amenityFeature: room.amenities.map((name) => ({
+      "@type": "LocationFeatureSpecification",
+      name,
+      value: true,
+    })),
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: room.bookingUrl ?? bookingUrl({ roomTypeID: room.cloudbedsRoomTypeID }),
+    },
   };
 }
 

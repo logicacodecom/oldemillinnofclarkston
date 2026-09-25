@@ -1,4 +1,4 @@
-import { property } from "./property";
+import { bookingUrl } from "./property";
 
 // Synced to the property's own booking system (Cloudbeds) as the source of
 // truth: room names, categories, occupancy, per-room amenities, descriptions,
@@ -10,6 +10,7 @@ export type Room = {
   name: string;
   category: "off-water" | "lakefront";
   shortDescription: string;
+  metaDescription: string;
   bedConfiguration?: string;
   maxGuests?: number;
   kitchenette?: boolean;
@@ -49,6 +50,8 @@ export const rooms: Room[] = [
     fireplace: false,
     shortDescription:
       "An off-water room with a full-size bed and warm rustic log furniture — a comfortable, practical base for your Clarkston stay, with access to the lake and kayaks.",
+    metaDescription:
+      "Off-water room in Clarkston, MI with a full bed and rustic log furniture. Includes lake access and complimentary kayaks.",
     amenities: [...BASE],
     images: ["09", "10", "11", "12", "13", "14"],
   },
@@ -63,6 +66,8 @@ export const rooms: Room[] = [
     fireplace: true,
     shortDescription:
       "An off-water room with a queen bed and rustic log furniture, featuring a wall-mounted electric fireplace and a kitchenette. Includes lake access and kayaks.",
+    metaDescription:
+      "Off-water queen room in Clarkston, MI with a kitchenette, wall-mounted fireplace and rustic log furniture. Includes lake access.",
     amenities: [...BASE, "Kitchenette", "Wall-mounted electric fireplace", "Smart TV with Roku"],
     images: ["16", "17", "18", "19", "21"],
   },
@@ -78,6 +83,8 @@ export const rooms: Room[] = [
     fireplace: true,
     shortDescription:
       "A lakefront room with a queen bed and rustic log furniture, set right by the water. Includes a kitchenette, dual-burner stovetop and a wall-mounted electric fireplace.",
+    metaDescription:
+      "Lakefront queen room in Clarkston, MI with a kitchenette, dual-burner stovetop and fireplace, set right on Van Norman Lake.",
     amenities: [
       ...BASE,
       "Kitchenette",
@@ -99,6 +106,8 @@ export const rooms: Room[] = [
     fireplace: true,
     shortDescription:
       "A lakefront room with two full-size beds and rustic log furniture — room to spread out by the water. Includes a kitchenette, dual-burner stovetop and a wall-mounted electric fireplace.",
+    metaDescription:
+      "Lakefront room in Clarkston, MI with two full beds, sleeping up to four, a kitchenette, stovetop and fireplace.",
     amenities: [
       ...BASE,
       "Kitchenette",
@@ -119,6 +128,8 @@ export const rooms: Room[] = [
     fireplace: true,
     shortDescription:
       "Our most accommodating lakefront suite, filled with rustic log furniture. Features a full kitchen, an in-unit washer and dryer, and a large-screen TV above a fireplace.",
+    metaDescription:
+      "Lakefront suite in Clarkston, MI with a full kitchen, in-unit washer/dryer and fireplace, sleeping up to four guests.",
     amenities: [
       ...BASE,
       "Full kitchen",
@@ -131,10 +142,10 @@ export const rooms: Room[] = [
   },
 ];
 
-// Give every room a default booking action (clean Cloudbeds URL) unless a
+// Give every room a Cloudbeds deep link to its own room type unless a
 // verified room-specific link is added later.
 for (const room of rooms) {
-  room.bookingUrl ??= property.bookingUrl;
+  room.bookingUrl ??= bookingUrl({ roomTypeID: room.cloudbedsRoomTypeID });
 }
 
 export const roomsBySlug = new Map(rooms.map((r) => [r.slug, r]));

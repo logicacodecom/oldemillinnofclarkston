@@ -4,7 +4,7 @@ import { GalleryGrid } from "@/components/GalleryGrid";
 import { galleryPhotos, galleryCategories, featured } from "@/lib/gallery";
 
 export const metadata: Metadata = {
-  title: "Photo Gallery — Rooms and Lakefront Views",
+  title: "Photo Gallery",
   description:
     "View current photos of the rooms, lakefront setting, covered patio and outdoor areas at Olde Mill Inn of Clarkston.",
   alternates: { canonical: "/gallery" },
