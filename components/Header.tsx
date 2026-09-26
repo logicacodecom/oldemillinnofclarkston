@@ -15,6 +15,9 @@ import { LanguageToggle } from "./LanguageToggle";
 // the hero and turns solid on scroll (`overlay`); elsewhere it is solid from the
 // top. Wordmark is typographic (the badge logo says "SOUTH", which conflicts
 // with the required public name — see docs/OWNER-CONFIRMATION.md).
+// Kept in the footer, left out of the header menu to keep it short.
+const HIDDEN_IN_HEADER = ["/pine-knob", "/things-to-do", "/contact"];
+
 export function Header({
   lang,
   nav,
@@ -29,6 +32,7 @@ export function Header({
   toggle: Dict["toggle"];
 }) {
   const overlay = basePath(usePathname()) === "/";
+  const links = nav.main.filter((l) => !HIDDEN_IN_HEADER.includes(l.href));
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -94,7 +98,7 @@ export function Header({
         </Link>
 
         <nav aria-label={nav.primaryAria} className="hidden xl:flex items-center gap-6">
-          {nav.main.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={localePath(lang, link.href)}
@@ -148,7 +152,7 @@ export function Header({
         className="xl:hidden fixed inset-0 top-20 bg-background overflow-y-auto"
       >
         <nav aria-label={nav.mobileAria} className="flex flex-col px-margin-mobile py-6 gap-1">
-          {nav.main.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={localePath(lang, link.href)}
