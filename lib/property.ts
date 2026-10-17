@@ -54,7 +54,7 @@ export const northLocation = {
   name: "The Olde Mill Inn of Clarkston North",
   short: "Clarkston North",
   address: "6853 Dixie Hwy, Clarkston, MI 48346",
-  url: "https://oldemillinnnorth.com/",
+  url: "https://www.oldemillinnnorth.com/",
 } as const;
 
 export const addressLine = `${property.address.street}, ${property.address.city}, ${property.address.state} ${property.address.postalCode}`;
