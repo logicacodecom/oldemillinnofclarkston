@@ -23,8 +23,8 @@ npm run typecheck  # tsc --noEmit
 ```
 app/                     App Router routes (home, rooms, rooms/[slug], lakefront-
                          experience, pine-knob, things-to-do, gallery,
-                         plan-your-stay, contact, privacy, accessibility,
-                         api/contact, sitemap.ts, robots.ts)
+                         plan-your-stay, contact, careers, privacy, accessibility,
+                         api/contact, api/careers, sitemap.ts, robots.ts)
 components/              Neo-matching UI (Header, Footer, MobileActionBar, CTA,
                          RoomCard, PageHero, GalleryGrid, ContactForm, …)
 lib/                     Centralized data: property config, rooms, attractions,
@@ -49,6 +49,8 @@ Environment variables (all optional; the site builds and runs without them):
 |---|---|
 | `NEXT_PUBLIC_PROPERTY_EMAIL` | Override the public email (defaults to the iCloud fallback) |
 | `CONTACT_WEBHOOK_URL` | Destination for contact-form submissions (until set, the form errors clearly instead of dropping messages) |
+| `RESEND_API_KEY` / `RESEND_FROM` | Deliver contact-form and job-application emails via Resend (preferred over the webhook) |
+| `CAREERS_TO` | Override the recipient of job applications (default ClarkstonHotel@gmail.com, in `lib/careers.ts`) |
 | `NEXT_PUBLIC_GA_ID` | Analytics; events are already emitted via `lib/analytics.ts` |
 
 See [docs/OWNER-CONFIRMATION.md](docs/OWNER-CONFIRMATION.md) for content and

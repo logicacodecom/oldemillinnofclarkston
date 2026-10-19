@@ -49,6 +49,13 @@ public site until confirmed.
 - [ ] Seasonal offers; continuous text-line availability
 
 ## Technical (wire before/after launch)
+- [ ] **Careers page (`/careers`)** — applications (with an optional PDF/Word
+      résumé up to 4 MB) are emailed to ClarkstonHotel@gmail.com via Resend
+      (`RESEND_API_KEY`), else forwarded to `CONTACT_WEBHOOK_URL`. Until a sending
+      domain is verified in Resend, set `CAREERS_TO` to the Resend account's own
+      address. Confirm the openings (Housekeeping, Front Desk, Maintenance), their
+      one-line descriptions and the equal-opportunity statement. No pay or hours
+      are shown.
 - [ ] `CONTACT_WEBHOOK_URL` — activates contact-form delivery (else it errors
       clearly and points to call/text; never silently drops).
 - [ ] `NEXT_PUBLIC_GA_ID` — analytics (events already emitted).

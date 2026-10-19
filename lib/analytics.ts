@@ -11,6 +11,7 @@ export const EVENTS = {
   roomView: "room_view",
   pineKnobCtaClick: "pine_knob_cta_click",
   contactFormSubmit: "contact_form_submit",
+  careersFormSubmit: "careers_form_submit",
   emailClick: "email_click",
   northSiteClick: "north_site_click",
 } as const;

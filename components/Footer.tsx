@@ -116,6 +116,14 @@ export function Footer({ lang }: { lang: Lang }) {
                 {t.common.getDirections} <Icon name="explore" className="text-sm" />
               </a>
             </li>
+            <li>
+              <Link
+                className="text-secondary-fixed-dim hover:text-surface-white transition-colors"
+                href={localePath(lang, "/careers")}
+              >
+                {t.footer.careers}
+              </Link>
+            </li>
             {t.nav.legal.map((link) => (
               <li key={link.href}>
                 <Link

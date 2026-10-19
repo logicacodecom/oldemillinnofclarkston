@@ -13,7 +13,8 @@ const lastModified: Record<string, string> = {
   "/gallery": "2026-09-25",
   "/plan-your-stay": "2026-09-25",
   "/contact": "2026-09-25",
-  "/privacy": "2026-09-25",
+  "/careers": "2026-10-19",
+  "/privacy": "2026-10-19",
   "/accessibility": "2026-09-25",
 };
 
