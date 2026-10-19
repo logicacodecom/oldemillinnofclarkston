@@ -49,6 +49,15 @@ public site until confirmed.
 - [ ] Seasonal offers; continuous text-line availability
 
 ## Technical (wire before/after launch)
+- [ ] **Book a Tour (`/book-a-tour`)** — 30-minute visits for weddings,
+      engagements, birthdays and parties. Until a booking link is set, the page
+      asks visitors to call or text. To turn on online booking: in Google Calendar
+      on ClarkstonHotel@gmail.com, choose Create → Appointment schedule, set a
+      30-minute duration and the days and hours tours are offered, save, then
+      Share → Website embed → Inline and copy the `src` URL (it starts with
+      `https://calendar.google.com/calendar/appointments/schedules/`). Put it in
+      `tourBookingUrl` in `lib/property.ts`. The calendar is embedded on the page;
+      a short `calendar.app.google` link also works but only as a button.
 - [ ] **Form email via Gmail** — on the Gmail account that sends the site's
       email (e.g. ClarkstonHotel@gmail.com), turn on 2-Step Verification, create
       an app password (Google Account → Security → App passwords), then set

@@ -35,6 +35,10 @@ export const property = {
   inquiryEmail: "ClarkstonHotel@gmail.com",
   // Clean Cloudbeds URL — no historical dates or campaign params (§5).
   bookingUrl: "https://hotels.cloudbeds.com/en/reservation/fuj1oa?currency=usd",
+  // Google Calendar appointment schedule for 30-minute event tours (on
+  // ClarkstonHotel@gmail.com). Paste its booking-page link here. While empty, the
+  // Book a Tour page asks visitors to call or text instead.
+  tourBookingUrl: "",
   geo: {
     latitude: 42.70349503,
     longitude: -83.40392303,

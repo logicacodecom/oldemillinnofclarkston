@@ -44,6 +44,11 @@ export const en = {
       description:
         "View current photos of the rooms, lakefront setting, covered patio and outdoor areas at Olde Mill Inn of Clarkston.",
     },
+    tour: {
+      title: "Book a Tour for Your Event",
+      description:
+        "Planning a wedding, engagement, birthday or party on Van Norman Lake? Book a 30-minute tour of the lakefront decks, beach and rooms at Olde Mill Inn of Clarkston.",
+    },
     plan: {
       title: "Plan Your Stay — FAQs & Policies",
       description:
@@ -81,6 +86,7 @@ export const en = {
       { label: "Things to Do", href: "/things-to-do" },
       { label: "Gallery", href: "/gallery" },
       { label: "Plan Your Stay", href: "/plan-your-stay" },
+      { label: "Book a Tour", href: "/book-a-tour" },
       { label: "Contact", href: "/contact" },
     ],
     legal: [
@@ -422,6 +428,35 @@ export const en = {
       prev: "Previous photo",
       next: "Next photo",
     },
+  },
+
+  tour: {
+    eyebrow: "Special events by the lake",
+    title: "Book a Tour",
+    subtitle:
+      "Planning a wedding, engagement, birthday or party? Come see the lakefront and our rooms in person. Pick a time below for a 30-minute visit.",
+    heroAlt: "Covered lakeside deck with a long wooden table at Olde Mill Inn of Clarkston",
+    occasionsTitle: "Celebrate by the lake",
+    occasionsIntro: `Host your special day indoors or outdoors beside ${property.lake}: covered lakeside decks, a sandy beach and dock, and spacious rooms for you and your guests.`,
+    occasions: [
+      { icon: "favorite", label: "Weddings" },
+      { icon: "diamond", label: "Engagements" },
+      { icon: "cake", label: "Birthdays" },
+      { icon: "celebration", label: "Parties & gatherings" },
+    ],
+    outdoorTitle: "Outdoors by the lake",
+    outdoorAlt: "Lakefront deck, dock and beach at Olde Mill Inn of Clarkston",
+    indoorTitle: "Spacious rooms inside",
+    indoorAlt: "Spacious guest room at Olde Mill Inn of Clarkston",
+    morePhotos: "See all photos",
+    bookTitle: "Pick a time for your visit",
+    bookIntro:
+      "Tours take about 30 minutes. We'll show you the indoor and outdoor spaces and talk through your plans.",
+    calendarTitle: "Tour booking calendar",
+    openCalendar: "Open the booking calendar",
+    pending: "Online tour booking is coming soon. In the meantime, call or text us to schedule your visit.",
+    callPrefix: "Prefer to talk first? Call",
+    textPrefix: "or text",
   },
 
   plan: {

@@ -1,0 +1,133 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { PageHero } from "@/components/PageHero";
+import { CTA } from "@/components/CTA";
+import { Icon } from "@/components/Icon";
+import { property } from "@/lib/property";
+import { tourPhotos } from "@/lib/gallery";
+import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
+import { EVENTS } from "@/lib/analytics";
+
+type Props = { params: { lang: Lang } };
+
+export function generateMetadata({ params }: Props): Metadata {
+  return pageMetadata(params.lang, "/book-a-tour", getDict(params.lang).meta.tour);
+}
+
+// Google's full appointment-schedule URL can be embedded (with gv=true); a short
+// calendar.app.google link can't, so it only gets the "open" button.
+function embedUrl(url: string): string | null {
+  if (!url.includes("calendar.google.com/calendar/appointments")) return null;
+  if (url.includes("gv=true")) return url;
+  return `${url}${url.includes("?") ? "&" : "?"}gv=true`;
+}
+
+// Six photos: one large plus five. On phones (two columns) the sixth is hidden
+// so the grid has no gap.
+function PhotoGrid({ title, photos, alt }: { title: string; photos: readonly string[]; alt: string }) {
+  return (
+    <div>
+      <h3 className="font-headline-md text-headline-md text-on-surface mb-5">{title}</h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        {photos.map((src, i) => (
+          <div
+            key={src}
+            className={`relative overflow-hidden rounded-xl bg-surface-container ${
+              i === 0 ? "col-span-2 aspect-[16/9] md:aspect-auto md:row-span-2" : "aspect-[4/3]"
+            } ${i === 5 ? "hidden md:block" : ""}`}
+          >
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes={i === 0 ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 50vw"}
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function BookATourPage({ params }: Props) {
+  const t = getDict(params.lang);
+  const c = t.tour;
+  const bookingUrl = property.tourBookingUrl;
+  const embed = bookingUrl ? embedUrl(bookingUrl) : null;
+
+  return (
+    <>
+      <PageHero eyebrow={c.eyebrow} title={c.title} subtitle={c.subtitle} image={tourPhotos.outdoor[0]} imageAlt={c.heroAlt} />
+
+      <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+        <div className="max-w-3xl mb-10">
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">{c.occasionsTitle}</h2>
+          <p className="text-on-surface-variant leading-relaxed">{c.occasionsIntro}</p>
+        </div>
+        <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {c.occasions.map((o) => (
+            <li key={o.icon} className="min-w-0 bg-surface-white rounded-xl p-4 md:p-5 border border-outline-variant/10 flex items-center gap-3">
+              <span className="w-10 h-10 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                <Icon name={o.icon} />
+              </span>
+              <span className="min-w-0 font-headline-md text-base md:text-lg leading-snug text-on-surface">{o.label}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="space-y-14">
+          <PhotoGrid title={c.outdoorTitle} photos={tourPhotos.outdoor} alt={c.outdoorAlt} />
+          <PhotoGrid title={c.indoorTitle} photos={tourPhotos.indoor} alt={c.indoorAlt} />
+        </div>
+        <div className="mt-8">
+          <CTA href={localePath(params.lang, "/gallery")} variant="ghost" icon="photo_library">
+            {c.morePhotos}
+          </CTA>
+        </div>
+      </section>
+
+      <section id="book" className="bg-surface-container-low py-section-gap scroll-mt-20">
+        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="max-w-3xl mb-8">
+            <h2 className="font-headline-lg text-headline-lg text-primary mb-4">{c.bookTitle}</h2>
+            <p className="text-on-surface-variant leading-relaxed">{bookingUrl ? c.bookIntro : c.pending}</p>
+          </div>
+
+          {embed && (
+            <iframe
+              src={embed}
+              title={c.calendarTitle}
+              loading="lazy"
+              className="w-full h-[720px] rounded-2xl border border-outline-variant/20 bg-surface-white mb-6"
+            />
+          )}
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            {bookingUrl ? (
+              <CTA href={bookingUrl} external icon="event_available" analyticsEvent={EVENTS.tourBookingClick}>
+                {c.openCalendar}
+              </CTA>
+            ) : (
+              <CTA href={property.phone.href} icon="call" analyticsEvent={EVENTS.phoneClick}>
+                {t.common.callNumber}
+              </CTA>
+            )}
+          </div>
+
+          <p className="mt-6 text-sm text-on-surface-variant">
+            {c.callPrefix}{" "}
+            <a className="text-primary underline underline-offset-2" href={property.phone.href} data-analytics-event={EVENTS.phoneClick}>
+              {property.phone.display}
+            </a>{" "}
+            {c.textPrefix}{" "}
+            <a className="text-primary underline underline-offset-2" href={property.text.href} data-analytics-event={EVENTS.textClick}>
+              {property.text.display}
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+    </>
+  );
+}
