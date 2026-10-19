@@ -70,7 +70,7 @@ export async function POST(request: Request) {
     try {
       await sendGmail(
         {
-          to: process.env.CAREERS_TO || careersEmail,
+          to: careersEmail,
           replyTo: email,
           subject: `Job application (South): ${positionTitle}${spanish ? " (Español)" : ""} — ${name}`,
           text,
