@@ -49,7 +49,7 @@ public site until confirmed.
 - [ ] Seasonal offers; continuous text-line availability
 
 ## Technical (wire before/after launch)
-- [ ] **Book a Tour (`/book-a-tour`)** — 30-minute visits for weddings,
+- [x] **Book a Tour (`/book-a-tour`)** — booking link set 2026-10-19. 30-minute visits for weddings,
       engagements, birthdays and parties. Until a booking link is set, the page
       asks visitors to call or text. To turn on online booking: in Google Calendar
       on ClarkstonHotel@gmail.com, choose Create → Appointment schedule, set a

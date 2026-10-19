@@ -55,6 +55,8 @@ export default function BookATourPage({ params }: Props) {
   const c = t.tour;
   const bookingUrl = property.tourBookingUrl;
   const embed = bookingUrl ? embedUrl(bookingUrl) : null;
+  // The full-page booking view, for the button (gv=true is the embed layout).
+  const openUrl = bookingUrl.replace(/[?&]gv=true$/, "").replace(/([?&])gv=true&/, "$1");
 
   return (
     <>
@@ -105,7 +107,7 @@ export default function BookATourPage({ params }: Props) {
 
           <div className="flex flex-col sm:flex-row gap-4">
             {bookingUrl ? (
-              <CTA href={bookingUrl} external icon="event_available" analyticsEvent={EVENTS.tourBookingClick}>
+              <CTA href={openUrl} external icon="event_available" analyticsEvent={EVENTS.tourBookingClick}>
                 {c.openCalendar}
               </CTA>
             ) : (

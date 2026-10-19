@@ -38,7 +38,8 @@ export const property = {
   // Google Calendar appointment schedule for 30-minute event tours (on
   // ClarkstonHotel@gmail.com). Paste its booking-page link here. While empty, the
   // Book a Tour page asks visitors to call or text instead.
-  tourBookingUrl: "",
+  tourBookingUrl:
+    "https://calendar.google.com/calendar/appointments/schedules/AcZssZ00_n7DYIxOVRtdd_JM3ECEQBcRrCTQrdoJqvHC_vqGKaGClAeCrr7LOHTtmZkVIeZ0bJ5GTijy?gv=true",
   geo: {
     latitude: 42.70349503,
     longitude: -83.40392303,
