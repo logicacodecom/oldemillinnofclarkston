@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { en } from "@/lib/dictionaries/en";
 import { careersEmail, isResumeFile, positions, resumeMaxBytes, type Position } from "@/lib/careers";
+import { gmailConfigured, sendGmail } from "@/lib/mail";
 
 // Job application handler: never accepts-and-drops an application.
-// Delivery order: Resend email with the résumé attached (RESEND_API_KEY)
+// Delivery order: Gmail with the résumé attached (GMAIL_USER + GMAIL_APP_PASSWORD)
 // → webhook (CONTACT_WEBHOOK_URL) → 501 so the form shows a clear error.
 export async function POST(request: Request) {
   let form: FormData;
@@ -32,7 +33,7 @@ export async function POST(request: Request) {
     position === "general" ? en.careersForm.general : en.careers.positions[position as Position].title;
 
   const file = form.get("resume");
-  let resume: { filename: string; content: string } | null = null;
+  let resume: { filename: string; bytes: Buffer } | null = null;
   if (file instanceof File && file.size > 0) {
     if (file.size > resumeMaxBytes) {
       return NextResponse.json({ error: "Résumé is too large." }, { status: 413 });
@@ -42,16 +43,14 @@ export async function POST(request: Request) {
     }
     resume = {
       filename: file.name.replace(/[^\w.\- ]+/g, "_").slice(-100),
-      content: Buffer.from(await file.arrayBuffer()).toString("base64"),
+      bytes: Buffer.from(await file.arrayBuffer()),
     };
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
   const webhook = process.env.CONTACT_WEBHOOK_URL;
 
-  // Preferred: send an email via Resend.
-  if (resendKey) {
-    const from = process.env.RESEND_FROM || "Olde Mill Inn Website <onboarding@resend.dev>";
+  // Preferred: email it through Gmail.
+  if (gmailConfigured()) {
     const text = [
       "New job application from oldemillinnofclarkston.com (South location)",
       "",
@@ -69,19 +68,16 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join("\n");
     try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          from,
-          to: [process.env.CAREERS_TO || careersEmail],
-          reply_to: email,
+      await sendGmail(
+        {
+          to: process.env.CAREERS_TO || careersEmail,
+          replyTo: email,
           subject: `Job application (South): ${positionTitle}${spanish ? " (Español)" : ""} — ${name}`,
           text,
-          ...(resume ? { attachments: [resume] } : {}),
-        }),
-      });
-      if (!res.ok) throw new Error(`Resend ${res.status}`);
+          ...(resume ? { attachments: [{ filename: resume.filename, content: resume.bytes }] } : {}),
+        },
+        "Olde Mill Inn Website"
+      );
       return NextResponse.json({ ok: true });
     } catch {
       return NextResponse.json({ error: "Could not deliver application." }, { status: 502 });
@@ -103,7 +99,7 @@ export async function POST(request: Request) {
           availability,
           message,
           lang: spanish ? "es" : "en",
-          resume,
+          resume: resume && { filename: resume.filename, content: resume.bytes.toString("base64") },
           source: "oldemillinnofclarkston.com/careers",
         }),
       });

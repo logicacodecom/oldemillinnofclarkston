@@ -49,7 +49,8 @@ Environment variables (all optional; the site builds and runs without them):
 |---|---|
 | `NEXT_PUBLIC_PROPERTY_EMAIL` | Override the public email (defaults to the iCloud fallback) |
 | `CONTACT_WEBHOOK_URL` | Destination for contact-form submissions (until set, the form errors clearly instead of dropping messages) |
-| `RESEND_API_KEY` / `RESEND_FROM` | Deliver contact-form and job-application emails via Resend (preferred over the webhook) |
+| `GMAIL_USER` / `GMAIL_APP_PASSWORD` | Send contact-form and job-application emails through Gmail (a Google app password, not the account password; see `lib/mail.ts`). Preferred over the webhook |
+| `CONTACT_TO` | Override the recipient of contact-form messages (default: the property email) |
 | `CAREERS_TO` | Override the recipient of job applications (default ClarkstonHotel@gmail.com, in `lib/careers.ts`) |
 | `NEXT_PUBLIC_GA_ID` | Analytics; events are already emitted via `lib/analytics.ts` |
 

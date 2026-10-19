@@ -11,7 +11,7 @@ export const positionIcons: Record<Position, string> = {
 };
 
 // Applications from both South and North go to this inbox. On the server,
-// CAREERS_TO overrides it (e.g. while the Resend sending domain is being verified).
+// CAREERS_TO overrides it.
 export const careersEmail = "ClarkstonHotel@gmail.com";
 
 // Résumé limits. Vercel caps a request body at 4.5 MB, so stay under it.

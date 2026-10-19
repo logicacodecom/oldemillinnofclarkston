@@ -49,14 +49,18 @@ public site until confirmed.
 - [ ] Seasonal offers; continuous text-line availability
 
 ## Technical (wire before/after launch)
+- [ ] **Form email via Gmail** — on the Gmail account that sends the site's
+      email (e.g. ClarkstonHotel@gmail.com), turn on 2-Step Verification, create
+      an app password (Google Account → Security → App passwords), then set
+      `GMAIL_USER` and `GMAIL_APP_PASSWORD` on Vercel and redeploy. This delivers
+      both contact-form messages and job applications.
 - [ ] **Careers page (`/careers`)** — applications (with an optional PDF/Word
-      résumé up to 4 MB) are emailed to ClarkstonHotel@gmail.com via Resend
-      (`RESEND_API_KEY`), else forwarded to `CONTACT_WEBHOOK_URL`. Until a sending
-      domain is verified in Resend, set `CAREERS_TO` to the Resend account's own
-      address. Confirm the openings (Housekeeping, Front Desk, Maintenance), their
+      résumé up to 4 MB) are emailed to ClarkstonHotel@gmail.com through that
+      Gmail setup (`CAREERS_TO` overrides the recipient), else forwarded to
+      `CONTACT_WEBHOOK_URL`. Confirm the openings (Housekeeping, Front Desk, Maintenance), their
       one-line descriptions and the equal-opportunity statement. No pay or hours
       are shown.
-- [ ] `CONTACT_WEBHOOK_URL` — activates contact-form delivery (else it errors
+- [ ] `CONTACT_WEBHOOK_URL` — optional fallback when Gmail isn't set (else it errors
       clearly and points to call/text; never silently drops).
 - [ ] `NEXT_PUBLIC_GA_ID` — analytics (events already emitted).
 - [ ] Old-URL redirects if replacing the current live site (`next.config.mjs`).
