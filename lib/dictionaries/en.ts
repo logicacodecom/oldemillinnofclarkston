@@ -62,6 +62,11 @@ export const en = {
       title: "Accessibility",
       description: "Olde Mill Inn of Clarkston's commitment to an accessible website.",
     },
+    careers: {
+      title: "Careers",
+      description:
+        "Join the team at The Olde Mill Inn of Clarkston on Van Norman Lake. We're hiring for housekeeping, front desk and maintenance. Apply online.",
+    },
     notFound: {
       title: "Page Not Found",
       description: "The page you're looking for doesn't exist.",
@@ -111,6 +116,7 @@ export const en = {
     explore: "Explore",
     contact: "Contact",
     plan: "Plan",
+    careers: "Careers",
     credit: "Website delivered by our technology partner,",
   },
 
@@ -501,6 +507,7 @@ export const en = {
         h: "Information we collect",
         ps: [
           "If you use our contact form, we collect the details you provide — such as your name, email address, optional phone number, optional travel dates and your message — so we can respond to your inquiry.",
+          "If you apply for a job on our careers page, we collect the details you provide — your name, email address, phone number, the position you're interested in, your availability, your message and any résumé you attach. Your application is emailed to our hiring team; the website itself doesn't keep a copy.",
           "Like most websites, we may collect limited technical and usage information (such as pages viewed) to understand how the site is used and to improve it. This is only active if an analytics service has been configured.",
         ],
       },
@@ -508,6 +515,7 @@ export const en = {
         h: "How we use information",
         ps: [
           "We use the information you submit to reply to your questions and to help arrange your stay. We do not sell your personal information.",
+          "We use job applications only to consider you for work with us and to contact you about it.",
         ],
       },
       {
@@ -521,6 +529,56 @@ export const en = {
     contactPrefix: "Questions about this statement? Contact us at",
     or: "or",
   },
+
+  careers: {
+    eyebrow: "Careers",
+    title: "Work with us",
+    heroAlt: "The Olde Mill Inn of Clarkston beside Van Norman Lake",
+    intro:
+      `We're an independent, family-operated lakefront inn on ${property.lake} in Clarkston, Michigan, and we're looking for dependable people to help take care of our guests. Have a look at our open positions and apply below. If there's a fit, we'll be in touch.`,
+    openingsTitle: "Open positions",
+    positions: {
+      housekeeping: {
+        title: "Housekeeping",
+        summary: "Clean and prepare the guest rooms between stays, including linens and bathrooms.",
+      },
+      frontDesk: {
+        title: "Front Desk",
+        summary: "Welcome guests, handle check-in and check-out, answer the phone and help with reservations.",
+      },
+      maintenance: {
+        title: "Maintenance",
+        summary: "Keep the rooms, building and lakefront grounds in good repair, from small fixes to seasonal upkeep.",
+      },
+    },
+    applyLink: "Apply now",
+    formTitle: "Apply online",
+    eeo: `${property.name} is an equal opportunity employer. We consider all applicants without regard to race, color, religion, sex, national origin, age, disability or any other status protected by law.`,
+  },
+  careersForm: {
+    intro: "Tell us a little about yourself. A résumé is welcome but not required.",
+    name: "Name",
+    email: "Email",
+    phone: "Phone",
+    position: "Position",
+    positionPlaceholder: "Select a position",
+    general: "General application",
+    availability: "Availability (optional)",
+    availabilityHint: "Days, hours and start date",
+    message: "About you (optional)",
+    resume: "Résumé (optional)",
+    resumeHint: "PDF or Word document, up to 4 MB.",
+    resumeWrongType: "Please attach a PDF or Word document (.pdf, .doc or .docx).",
+    resumeTooLarge: "That file is larger than 4 MB. Please attach a smaller file.",
+    consent: "By submitting, you agree we may use the details above to consider your application and contact you about it. We don't sell your information.",
+    errorPrefix: "Sorry — we couldn't send your application right now. Please email your résumé to",
+    errorOr: "or call",
+    sending: "Sending…",
+    submit: "Submit application",
+    successTitle: "Thanks — your application is on its way.",
+    successText: "We review every application and will contact you if there's a fit.",
+  },
+
 
   accessibility: {
     title: "Accessibility",
