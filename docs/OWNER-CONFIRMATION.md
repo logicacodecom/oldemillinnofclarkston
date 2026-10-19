@@ -56,7 +56,7 @@ public site until confirmed.
       both contact-form messages and job applications.
 - [ ] **Careers page (`/careers`)** — applications (with an optional PDF/Word
       résumé up to 4 MB) are emailed to ClarkstonHotel@gmail.com through that
-      Gmail setup (`CAREERS_TO` overrides the recipient), else forwarded to
+      Gmail setup, else forwarded to
       `CONTACT_WEBHOOK_URL`. Confirm the openings (Housekeeping, Front Desk, Maintenance), their
       one-line descriptions and the equal-opportunity statement. No pay or hours
       are shown.

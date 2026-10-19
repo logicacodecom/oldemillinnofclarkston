@@ -44,8 +44,7 @@ export async function POST(request: Request) {
     try {
       await sendGmail(
         {
-          // CONTACT_TO overrides the recipient; it falls back to the shared inquiry inbox.
-          to: process.env.CONTACT_TO || property.inquiryEmail,
+          to: property.inquiryEmail,
           replyTo: email,
           subject: `Website inquiry — ${name}`,
           text,

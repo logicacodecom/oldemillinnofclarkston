@@ -10,8 +10,7 @@ export const positionIcons: Record<Position, string> = {
   maintenance: "handyman",
 };
 
-// Applications from both South and North go to this inbox. On the server,
-// CAREERS_TO overrides it.
+// Applications from both North and South go to this inbox.
 export const careersEmail = "ClarkstonHotel@gmail.com";
 
 // Résumé limits. Vercel caps a request body at 4.5 MB, so stay under it.
