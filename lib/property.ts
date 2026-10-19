@@ -30,6 +30,9 @@ export const property = {
   },
   // Source of truth: the email on the property's own Cloudbeds booking system.
   email: process.env.NEXT_PUBLIC_PROPERTY_EMAIL ?? "oldmillinnofclarkston@gmail.com",
+  // Inbox that receives contact-form messages (shared with North). The public
+  // email above stays as shown on the site.
+  inquiryEmail: "ClarkstonHotel@gmail.com",
   // Clean Cloudbeds URL — no historical dates or campaign params (§5).
   bookingUrl: "https://hotels.cloudbeds.com/en/reservation/fuj1oa?currency=usd",
   geo: {
