@@ -36,3 +36,10 @@ export const featured = {
   waterfrontBuilding: "/images/gallery/56.jpg", // building over the water
   streetExterior: "/images/gallery/04.jpg", // street view + vacancy sign
 } as const;
+
+// Book a Tour page: the lakefront spaces and the most spacious rooms. Six each,
+// to fill the grid (the first photo is shown large).
+export const tourPhotos = {
+  outdoor: [61, 60, 65, 66, 54, 69].map((n) => `/images/gallery/${n}.jpg`),
+  indoor: [23, 30, 43, 33, 28, 45].map((n) => `/images/gallery/${n}.jpg`),
+} as const;

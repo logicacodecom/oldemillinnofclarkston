@@ -43,6 +43,11 @@ export const es: Dict = {
       description:
         "Vea fotos actuales de las habitaciones, el entorno frente al lago, el patio techado y las áreas al aire libre de Olde Mill Inn of Clarkston.",
     },
+    tour: {
+      title: "Agende una visita para su evento",
+      description:
+        "¿Planea una boda, un compromiso, un cumpleaños o una fiesta junto al lago Van Norman? Agende una visita de 30 minutos a las terrazas, la playa y las habitaciones de Olde Mill Inn of Clarkston.",
+    },
     plan: {
       title: "Planifique su estadía: preguntas frecuentes y políticas",
       description:
@@ -80,6 +85,7 @@ export const es: Dict = {
       { label: "Qué hacer", href: "/things-to-do" },
       { label: "Galería", href: "/gallery" },
       { label: "Planifique su estadía", href: "/plan-your-stay" },
+      { label: "Agende una visita", href: "/book-a-tour" },
       { label: "Contacto", href: "/contact" },
     ],
     legal: [
@@ -442,6 +448,35 @@ export const es: Dict = {
       prev: "Foto anterior",
       next: "Foto siguiente",
     },
+  },
+
+  tour: {
+    eyebrow: "Eventos especiales junto al lago",
+    title: "Agende una visita",
+    subtitle:
+      "¿Planea una boda, un compromiso, un cumpleaños o una fiesta? Venga a conocer el frente al lago y nuestras habitaciones en persona. Elija un horario a continuación para una visita de 30 minutos.",
+    heroAlt: "Terraza techada junto al lago con una mesa larga de madera en Olde Mill Inn of Clarkston",
+    occasionsTitle: "Celebre junto al lago",
+    occasionsIntro: `Celebre su día especial bajo techo o al aire libre junto al ${property.lake}: terrazas techadas frente al lago, una playa de arena con muelle y habitaciones amplias para usted y sus invitados.`,
+    occasions: [
+      { icon: "favorite", label: "Bodas" },
+      { icon: "diamond", label: "Compromisos" },
+      { icon: "cake", label: "Cumpleaños" },
+      { icon: "celebration", label: "Fiestas y reuniones" },
+    ],
+    outdoorTitle: "Al aire libre junto al lago",
+    outdoorAlt: "Terraza, muelle y playa frente al lago en Olde Mill Inn of Clarkston",
+    indoorTitle: "Habitaciones amplias",
+    indoorAlt: "Habitación amplia en Olde Mill Inn of Clarkston",
+    morePhotos: "Ver todas las fotos",
+    bookTitle: "Elija un horario para su visita",
+    bookIntro:
+      "Las visitas duran unos 30 minutos. Le mostraremos los espacios interiores y exteriores y conversaremos sobre sus planes.",
+    calendarTitle: "Calendario para agendar visitas",
+    openCalendar: "Abrir el calendario de visitas",
+    pending: "Muy pronto podrá agendar su visita en línea. Mientras tanto, llámenos o envíenos un mensaje de texto para programarla.",
+    callPrefix: "¿Prefiere hablar primero? Llame al",
+    textPrefix: "o envíe un mensaje de texto al",
   },
 
   plan: {
