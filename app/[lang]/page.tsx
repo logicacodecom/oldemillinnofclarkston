@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { RoomCard } from "@/components/RoomCard";
@@ -35,7 +36,7 @@ export default function HomePage({ params }: Props) {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-primary/40" />
-        <div className="relative z-10 text-center max-w-4xl px-margin-mobile text-surface-white pt-20">
+        <div className="relative z-10 text-center max-w-4xl px-margin-mobile text-surface-white pt-[calc(6rem+var(--promo-h))] pb-12">
           <p className="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary-fixed mb-4">
             {h.eyebrow}
           </p>
@@ -59,13 +60,20 @@ export default function HomePage({ params }: Props) {
               {t.common.callNumber}
             </CTA>
           </div>
+          <Link
+            href={to("/celebrate")}
+            className="inline-block mt-6 font-label-lg text-label-lg text-surface-white underline underline-offset-4 decoration-sunset-accent hover:text-sunset-accent"
+          >
+            <Icon name="celebration" className="text-lg align-middle mr-2" />
+            {h.heroCelebrate} →
+          </Link>
         </div>
       </section>
 
       {/* Live availability & rates — overlaps the hero on desktop, sits below it on mobile */}
       <section
         id="availability"
-        className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-10 md:pt-0 md:-mt-24 md:mb-16 scroll-mt-24"
+        className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-10 md:pt-0 md:-mt-24 md:mb-16 scroll-mt-[calc(6rem+var(--promo-h))]"
       >
         <h2 className="font-headline-lg text-headline-lg text-primary text-center mb-6 md:hidden">
           {h.availabilityTitle}
@@ -189,7 +197,7 @@ export default function HomePage({ params }: Props) {
               {h.celebrateText}
             </p>
             <ul className="flex flex-wrap gap-2 mb-8">
-              {t.tour.occasions.map((o) => (
+              {t.celebrate.occasions.map((o) => (
                 <li
                   key={o.icon}
                   className="flex items-center gap-2 rounded-full bg-surface-container px-3 py-1.5 text-sm text-on-surface"
@@ -200,7 +208,7 @@ export default function HomePage({ params }: Props) {
               ))}
             </ul>
             <div className="flex flex-col sm:flex-row gap-4">
-              <CTA href={to("/book-a-tour")} icon="event_available">
+              <CTA href={to("/celebrate")} icon="celebration">
                 {h.celebrateCta}
               </CTA>
               <CTA href={to("/rooms/honeymoon-family-suite")} variant="outline" icon="favorite">

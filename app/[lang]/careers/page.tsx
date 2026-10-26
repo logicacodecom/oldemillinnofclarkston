@@ -43,7 +43,7 @@ export default function CareersPage({ params }: Props) {
           <p className="mt-10 text-sm text-on-surface-variant leading-relaxed">{c.eeo}</p>
         </div>
 
-        <div id="apply" className="scroll-mt-24">
+        <div id="apply" className="scroll-mt-[calc(6rem+var(--promo-h))]">
           <h2 className="font-headline-lg text-headline-lg text-primary mb-6">{c.formTitle}</h2>
           <CareersForm t={t.careersForm} positionTitles={positionTitles} lang={params.lang} />
         </div>

@@ -10,13 +10,15 @@ import type { Dict } from "@/lib/dictionaries/en";
 import { EVENTS } from "@/lib/analytics";
 import { Icon } from "./Icon";
 import { LanguageToggle } from "./LanguageToggle";
+import { PromoBanner } from "./PromoBanner";
+import { promoShownOn } from "@/lib/promo";
 
 // Header matching the Neo TopAppBar. On the homepage it starts transparent over
 // the hero and turns solid on scroll (`overlay`); elsewhere it is solid from the
 // top. Wordmark is typographic (the badge logo says "SOUTH", which conflicts
 // with the required public name — see docs/OWNER-CONFIRMATION.md).
 // Kept in the footer, left out of the header menu to keep it short.
-const HIDDEN_IN_HEADER = ["/pine-knob", "/things-to-do", "/contact"];
+const HIDDEN_IN_HEADER = ["/lakefront-experience", "/plan-your-stay", "/pine-knob", "/things-to-do", "/contact"];
 
 export function Header({
   lang,
@@ -24,14 +26,18 @@ export function Header({
   bookNow,
   callNumber,
   toggle,
+  promo,
 }: {
   lang: Lang;
   nav: Dict["nav"];
+  promo: Dict["promo"];
   bookNow: string;
   callNumber: string;
   toggle: Dict["toggle"];
 }) {
-  const overlay = basePath(usePathname()) === "/";
+  const path = basePath(usePathname());
+  const overlay = path === "/";
+  const showPromo = promoShownOn(path);
   const links = nav.main.filter((l) => !HIDDEN_IN_HEADER.includes(l.href));
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,7 +64,7 @@ export function Header({
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 h-20 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
         menuOpen
           ? "bg-background shadow-sm" // no backdrop-filter while open, else the fixed menu gets clamped to the header
           : light
@@ -66,7 +72,8 @@ export function Header({
             : "bg-background/95 backdrop-blur shadow-sm"
       }`}
     >
-      <div className="h-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
+      {showPromo && <PromoBanner lang={lang} t={promo} />}
+      <div className="h-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
         <Link href={localePath(lang, "/")} className="flex items-center gap-3" aria-label={nav.homeAria}>
           <Image
             src="/images/logo.png"
@@ -149,7 +156,9 @@ export function Header({
       <div
         id="mobile-menu"
         hidden={!menuOpen}
-        className="xl:hidden fixed inset-0 top-20 bg-background overflow-y-auto"
+        className={`xl:hidden fixed inset-0 bg-background overflow-y-auto ${
+          showPromo ? "top-[calc(5rem+var(--promo-h))]" : "top-20"
+        }`}
       >
         <nav aria-label={nav.mobileAria} className="flex flex-col px-margin-mobile py-6 gap-1">
           {links.map((link) => (

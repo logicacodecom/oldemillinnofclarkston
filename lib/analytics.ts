@@ -15,6 +15,7 @@ export const EVENTS = {
   careersFormSubmit: "careers_form_submit",
   emailClick: "email_click",
   northSiteClick: "north_site_click",
+  promoBannerClick: "promo_banner_click",
 } as const;
 
 export type AnalyticsEvent = (typeof EVENTS)[keyof typeof EVENTS];

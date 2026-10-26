@@ -109,7 +109,7 @@ export default function RoomDetailPage({ params }: Props) {
                 <h2 className="font-headline-md text-lg text-on-surface mb-2">{rp.celebrateTitle}</h2>
                 <p className="text-on-surface-variant text-sm leading-relaxed mb-3">{rp.celebrateText}</p>
                 <Link
-                  href={localePath(lang, "/book-a-tour")}
+                  href={localePath(lang, "/celebrate")}
                   className="text-primary font-semibold underline underline-offset-2"
                 >
                   {rp.celebrateLink}
@@ -129,7 +129,7 @@ export default function RoomDetailPage({ params }: Props) {
 
         {/* Booking rail */}
         <aside className="lg:col-span-1">
-          <div className="bg-surface-white rounded-2xl border border-outline-variant/20 shadow-sm p-6 lg:sticky lg:top-24">
+          <div className="bg-surface-white rounded-2xl border border-outline-variant/20 shadow-sm p-6 lg:sticky lg:top-[calc(6rem+var(--promo-h))]">
             <p className="font-headline-md text-headline-md text-on-surface mb-2">{rp.readyTitle}</p>
             <p className="text-on-surface-variant text-sm mb-6">{rp.readyText}</p>
             <div className="flex flex-col gap-3">

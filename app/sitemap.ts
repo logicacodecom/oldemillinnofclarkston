@@ -6,6 +6,7 @@ import { langs, localePath, type Lang } from "@/lib/i18n";
 // Last real content update per route (keep in sync when a page's content changes).
 const lastModified: Record<string, string> = {
   "/": "2026-10-26",
+  "/celebrate": "2026-10-26",
   "/rooms": "2026-09-25",
   "/lakefront-experience": "2026-09-25",
   "/pine-knob": "2026-09-25",

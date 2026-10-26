@@ -9,6 +9,7 @@ import { Main } from "@/components/Main";
 import { MobileActionBar } from "@/components/MobileActionBar";
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { JsonLd, lodgingJsonLd } from "@/components/JsonLd";
+import { promoInitScript } from "@/lib/promo";
 import { langs, isLang, getDict, localePath, type Lang } from "@/lib/i18n";
 
 const playfair = Playfair_Display({
@@ -86,8 +87,10 @@ export default function RootLayout({
   const lang = params.lang;
   const t = getDict(lang);
   return (
-    <html lang={t.htmlLang} className={`${playfair.variable} ${inter.variable} ${greatVibes.variable} scroll-smooth`}>
+    // suppressHydrationWarning: promoInitScript may add data-promo-off before hydration.
+    <html suppressHydrationWarning lang={t.htmlLang} className={`${playfair.variable} ${inter.variable} ${greatVibes.variable} scroll-smooth`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: promoInitScript }} />
         {/* Material Symbols icon font (decorative icons; paired with text labels) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -104,7 +107,14 @@ export default function RootLayout({
         >
           {t.skip}
         </a>
-        <Header lang={lang} nav={t.nav} bookNow={t.common.bookNow} callNumber={t.common.callNumber} toggle={t.toggle} />
+        <Header
+          lang={lang}
+          nav={t.nav}
+          bookNow={t.common.bookNow}
+          callNumber={t.common.callNumber}
+          toggle={t.toggle}
+          promo={t.promo}
+        />
         <Main>{children}</Main>
         <Footer lang={lang} />
         <MobileActionBar lang={lang} />

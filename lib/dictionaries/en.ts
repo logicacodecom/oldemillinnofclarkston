@@ -11,6 +11,14 @@ export const en = {
   toggle: { label: "Español", aria: "Ver este sitio en español", hrefLang: "es" },
   skip: "Skip to content",
 
+  // Site-wide events banner (hidden on the Celebrate and Schedule a Tour pages).
+  promo: {
+    text: "Weddings, anniversaries & celebrations on Van Norman Lake",
+    short: "Celebrate by the lake",
+    cta: "Explore events",
+    dismiss: "Close announcement",
+  },
+
   meta: {
     defaultTitle: "Lakefront Hotel in Clarkston, MI | Olde Mill Inn Near Pine Knob",
     titleTemplate: "%s | Olde Mill Inn of Clarkston",
@@ -44,10 +52,15 @@ export const en = {
       description:
         "View current photos of the rooms, lakefront setting, covered patio and outdoor areas at Olde Mill Inn of Clarkston.",
     },
-    tour: {
-      title: "Book a Tour for Your Event",
+    celebrate: {
+      title: "Lakefront Event Venue in Clarkston, MI",
       description:
-        "Planning a wedding, anniversary, birthday, shower, graduation or family reunion on Van Norman Lake? Book a 30-minute tour of the lakefront decks, beach and rooms at Olde Mill Inn of Clarkston.",
+        "Celebrate weddings, anniversaries, birthdays, showers, graduations and family reunions on Van Norman Lake. Covered lakeside decks, a sandy beach and dock, and rooms for your guests at Olde Mill Inn of Clarkston.",
+    },
+    tour: {
+      title: "Schedule a Tour for Your Event",
+      description:
+        "Schedule a 30-minute tour of the lakefront decks, beach and rooms at Olde Mill Inn of Clarkston to plan your wedding, anniversary or celebration on Van Norman Lake.",
     },
     plan: {
       title: "Plan Your Stay — FAQs & Policies",
@@ -81,12 +94,13 @@ export const en = {
   nav: {
     main: [
       { label: "Rooms", href: "/rooms" },
+      { label: "Celebrate by the Lake", href: "/celebrate" },
+      { label: "Gallery", href: "/gallery" },
+      { label: "Schedule a Tour", href: "/book-a-tour" },
       { label: "Lakefront Experience", href: "/lakefront-experience" },
+      { label: "Plan Your Stay", href: "/plan-your-stay" },
       { label: "Pine Knob", href: "/pine-knob" },
       { label: "Things to Do", href: "/things-to-do" },
-      { label: "Gallery", href: "/gallery" },
-      { label: "Plan Your Stay", href: "/plan-your-stay" },
-      { label: "Book a Tour", href: "/book-a-tour" },
       { label: "Contact", href: "/contact" },
     ],
     legal: [
@@ -174,7 +188,8 @@ export const en = {
     eyebrow: "Lakefront lodging in Clarkston, Michigan",
     heroTitle: "Stay on the Lake. Minutes from Pine Knob.",
     heroText:
-      "Enjoy a relaxed Clarkston stay with comfortable rooms, complimentary kayaks and pedal boats, waterfront spaces, and convenient access to concerts, skiing, dining and local attractions.",
+      "Enjoy a relaxed Clarkston stay with comfortable rooms, complimentary kayaks and pedal boats, and convenient access to concerts, skiing and dining, plus a lakeside setting for weddings, anniversaries and celebrations.",
+    heroCelebrate: "Planning a celebration? Explore events by the lake",
     heroAlt: "Aerial view of Olde Mill Inn of Clarkston along the shoreline of Van Norman Lake",
     availabilityTitle: "Check availability & rates",
     glanceAria: "At a glance",
@@ -213,7 +228,7 @@ export const en = {
     celebrateTitle: "Celebrate Life's Milestones on the Water",
     celebrateText: `From weddings and anniversaries to birthdays, showers and family reunions, gather indoors or outdoors beside ${property.lake}. Book a 30-minute tour to see the covered lakeside decks, beach and rooms, and talk through your plans.`,
     celebrateAlt: "Covered lakeside deck with a long wooden table at Olde Mill Inn of Clarkston",
-    celebrateCta: "Book a tour",
+    celebrateCta: "Explore celebrations",
     anniversaryCta: "Anniversary getaway",
     pineTitle: "Going to Pine Knob? Stay Approximately Five Miles Away.",
     pineText:
@@ -269,7 +284,7 @@ export const en = {
     celebrateTitle: "Celebrating something special?",
     celebrateText:
       "With a fireplace, full kitchen and lake views, this suite makes a memorable stay for a honeymoon or anniversary. Hosting family and friends too? Book a tour to see our lakeside spaces.",
-    celebrateLink: "Plan an event",
+    celebrateLink: "See celebrations by the lake",
   },
 
   // Client component: strings only. {n} is replaced at render time.
@@ -440,13 +455,12 @@ export const en = {
     },
   },
 
-  tour: {
-    eyebrow: "Special events by the lake",
-    title: "Book a Tour",
-    subtitle:
-      "Planning a wedding, anniversary, birthday, shower or family reunion? Come see the lakefront and our rooms in person. Pick a time below for a 30-minute visit.",
+  celebrate: {
+    eyebrow: "Weddings, anniversaries & celebrations",
+    title: "Celebrate by the Lake",
+    subtitle: `Gather family and friends beside ${property.lake}, indoors or out, for the moments that matter.`,
     heroAlt: "Covered lakeside deck with a long wooden table at Olde Mill Inn of Clarkston",
-    occasionsTitle: "Celebrate by the lake",
+    occasionsTitle: "For every milestone",
     occasionsIntro: `Host your special day indoors or outdoors beside ${property.lake}: covered lakeside decks, a sandy beach and dock, and spacious rooms for you and your guests.`,
     occasions: [
       { icon: "local_florist", label: "Weddings" },
@@ -458,11 +472,40 @@ export const en = {
       { icon: "diversity_3", label: "Family reunions" },
       { icon: "celebration", label: "Parties & gatherings" },
     ],
+    spacesTitle: "The spaces",
+    spaces: [
+      { icon: "deck", title: "Covered lakeside decks", text: "Shaded decks right on the water, with rustic log tables and seating." },
+      { icon: "beach_access", title: "Beach & dock", text: "A sandy beach and dock at the water's edge for photos and fresh air." },
+      { icon: "bed", title: "Spacious rooms", text: "Rustic rooms indoors for getting ready, relaxing or staying the night." },
+    ],
     outdoorTitle: "Outdoors by the lake",
     outdoorAlt: "Lakefront deck, dock and beach at Olde Mill Inn of Clarkston",
     indoorTitle: "Spacious rooms inside",
     indoorAlt: "Spacious guest room at Olde Mill Inn of Clarkston",
     morePhotos: "See all photos",
+    seeLakefront: "See the lakefront",
+    stayTitle: "Stay the night",
+    stayText:
+      "Book rooms for out-of-town family and friends, or reserve the Presidential Honeymoon Suite for the couple, with a fireplace, full kitchen and lake views.",
+    viewRooms: "View rooms",
+    viewSuite: "Honeymoon Suite",
+    howTitle: "How it works",
+    steps: [
+      { icon: "event_available", title: "Schedule a tour", text: "Pick a time online for a 30-minute visit." },
+      { icon: "directions_walk", title: "Visit the inn", text: "See the decks, beach and rooms in person." },
+      { icon: "forum", title: "Plan your day", text: "Talk through your plans with us." },
+    ],
+    finalTitle: "Come see it in person",
+    finalText: "Tours take about 30 minutes. Pick a time that works for you, or call or text us.",
+    scheduleCta: "Schedule a tour",
+  },
+
+  tour: {
+    eyebrow: "Special events by the lake",
+    title: "Schedule a Tour",
+    subtitle:
+      "Planning a wedding, anniversary, birthday, shower or family reunion? Come see the lakefront and our rooms in person. Pick a time below for a 30-minute visit.",
+    heroAlt: "Covered lakeside deck with a long wooden table at Olde Mill Inn of Clarkston",
     bookTitle: "Pick a time for your visit",
     bookIntro:
       "Tours take about 30 minutes. We'll show you the indoor and outdoor spaces and talk through your plans.",
@@ -471,6 +514,7 @@ export const en = {
     pending: "Online tour booking is coming soon. In the meantime, call or text us to schedule your visit.",
     callPrefix: "Prefer to talk first? Call",
     textPrefix: "or text",
+    seeSpaces: "See the event spaces and occasions",
   },
 
   plan: {

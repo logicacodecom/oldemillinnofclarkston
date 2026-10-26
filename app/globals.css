@@ -49,3 +49,14 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Events banner height (lib/promo.ts). Collapses to 0 once dismissed. */
+:root {
+  --promo-h: 2.5rem;
+}
+html[data-promo-off] {
+  --promo-h: 0px;
+}
+html[data-promo-off] .promo-bar {
+  display: none;
+}

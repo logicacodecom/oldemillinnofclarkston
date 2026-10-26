@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { CTA } from "@/components/CTA";
-import { Icon } from "@/components/Icon";
 import { property } from "@/lib/property";
 import { tourPhotos } from "@/lib/gallery";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
@@ -22,34 +21,6 @@ function embedUrl(url: string): string | null {
   return `${url}${url.includes("?") ? "&" : "?"}gv=true`;
 }
 
-// Six photos: one large plus five. On phones (two columns) the sixth is hidden
-// so the grid has no gap.
-function PhotoGrid({ title, photos, alt }: { title: string; photos: readonly string[]; alt: string }) {
-  return (
-    <div>
-      <h3 className="font-headline-md text-headline-md text-on-surface mb-5">{title}</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-        {photos.map((src, i) => (
-          <div
-            key={src}
-            className={`relative overflow-hidden rounded-xl bg-surface-container ${
-              i === 0 ? "col-span-2 aspect-[16/9] md:aspect-auto md:row-span-2" : "aspect-[4/3]"
-            } ${i === 5 ? "hidden md:block" : ""}`}
-          >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes={i === 0 ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 50vw"}
-              className="object-cover"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function BookATourPage({ params }: Props) {
   const t = getDict(params.lang);
   const c = t.tour;
@@ -61,33 +32,6 @@ export default function BookATourPage({ params }: Props) {
   return (
     <>
       <PageHero eyebrow={c.eyebrow} title={c.title} subtitle={c.subtitle} image={tourPhotos.outdoor[0]} imageAlt={c.heroAlt} />
-
-      <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-        <div className="max-w-3xl mb-10">
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">{c.occasionsTitle}</h2>
-          <p className="text-on-surface-variant leading-relaxed">{c.occasionsIntro}</p>
-        </div>
-        <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {c.occasions.map((o) => (
-            <li key={o.icon} className="min-w-0 bg-surface-white rounded-xl p-4 md:p-5 border border-outline-variant/10 flex items-center gap-3">
-              <span className="w-10 h-10 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary">
-                <Icon name={o.icon} />
-              </span>
-              <span className="min-w-0 font-headline-md text-base md:text-lg leading-snug text-on-surface">{o.label}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="space-y-14">
-          <PhotoGrid title={c.outdoorTitle} photos={tourPhotos.outdoor} alt={c.outdoorAlt} />
-          <PhotoGrid title={c.indoorTitle} photos={tourPhotos.indoor} alt={c.indoorAlt} />
-        </div>
-        <div className="mt-8">
-          <CTA href={localePath(params.lang, "/gallery")} variant="ghost" icon="photo_library">
-            {c.morePhotos}
-          </CTA>
-        </div>
-      </section>
 
       <section id="book" className="bg-surface-container-low py-section-gap scroll-mt-20">
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
@@ -118,6 +62,12 @@ export default function BookATourPage({ params }: Props) {
           </div>
 
           <p className="mt-6 text-sm text-on-surface-variant">
+            <Link className="text-primary font-semibold underline underline-offset-2" href={localePath(params.lang, "/celebrate")}>
+              {c.seeSpaces}
+            </Link>
+          </p>
+
+          <p className="mt-3 text-sm text-on-surface-variant">
             {c.callPrefix}{" "}
             <a className="text-primary underline underline-offset-2" href={property.phone.href} data-analytics-event={EVENTS.phoneClick}>
               {property.phone.display}
