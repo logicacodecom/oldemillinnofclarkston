@@ -46,7 +46,7 @@ export const es: Dict = {
     tour: {
       title: "Agende una visita para su evento",
       description:
-        "¿Planea una boda, un compromiso, un cumpleaños o una fiesta junto al lago Van Norman? Agende una visita de 30 minutos a las terrazas, la playa y las habitaciones de Olde Mill Inn of Clarkston.",
+        "¿Planea una boda, un aniversario, un cumpleaños, un baby shower, una graduación o una reunión familiar junto al lago Van Norman? Agende una visita de 30 minutos a las terrazas, la playa y las habitaciones de Olde Mill Inn of Clarkston.",
     },
     plan: {
       title: "Planifique su estadía: preguntas frecuentes y políticas",
@@ -232,6 +232,12 @@ export const es: Dict = {
       },
     ],
     exploreLakefront: "Conozca el lago",
+    celebrateEyebrow: "Celebraciones junto al lago",
+    celebrateTitle: "Celebre los momentos importantes junto al agua",
+    celebrateText: `Desde bodas y aniversarios hasta cumpleaños, baby showers y reuniones familiares, reúnase bajo techo o al aire libre junto al ${property.lake}. Agende una visita de 30 minutos para conocer las terrazas techadas frente al lago, la playa y las habitaciones, y conversar sobre sus planes.`,
+    celebrateAlt: "Terraza techada junto al lago con una mesa larga de madera en Olde Mill Inn of Clarkston",
+    celebrateCta: "Agende una visita",
+    anniversaryCta: "Escapada de aniversario",
     pineTitle: "¿Va a Pine Knob? Hospédese a unas cinco millas.",
     pineText:
       "Haga de Olde Mill Inn su base en Clarkston para conciertos, esquí y eventos de temporada. Al terminar, regrese a un entorno tranquilo frente al lago en lugar de un hotel convencional de carretera.",
@@ -283,6 +289,10 @@ export const es: Dict = {
     readyTitle: "¿Listo para hospedarse?",
     readyText: "Consulte disponibilidad y tarifas en tiempo real en nuestro sistema de reservas seguro, o llame al hotel.",
     relatedTitle: "También le puede interesar",
+    celebrateTitle: "¿Celebra algo especial?",
+    celebrateText:
+      "Con chimenea, cocina completa y vista al lago, esta suite es ideal para una luna de miel o un aniversario inolvidable. ¿También recibirá a familiares y amigos? Agende una visita para conocer nuestros espacios junto al lago.",
+    celebrateLink: "Planifique un evento",
   },
 
   availability: {
@@ -454,14 +464,18 @@ export const es: Dict = {
     eyebrow: "Eventos especiales junto al lago",
     title: "Agende una visita",
     subtitle:
-      "¿Planea una boda, un compromiso, un cumpleaños o una fiesta? Venga a conocer el frente al lago y nuestras habitaciones en persona. Elija un horario a continuación para una visita de 30 minutos.",
+      "¿Planea una boda, un aniversario, un cumpleaños, un baby shower o una reunión familiar? Venga a conocer el frente al lago y nuestras habitaciones en persona. Elija un horario a continuación para una visita de 30 minutos.",
     heroAlt: "Terraza techada junto al lago con una mesa larga de madera en Olde Mill Inn of Clarkston",
     occasionsTitle: "Celebre junto al lago",
     occasionsIntro: `Celebre su día especial bajo techo o al aire libre junto al ${property.lake}: terrazas techadas frente al lago, una playa de arena con muelle y habitaciones amplias para usted y sus invitados.`,
     occasions: [
-      { icon: "favorite", label: "Bodas" },
+      { icon: "local_florist", label: "Bodas" },
       { icon: "diamond", label: "Compromisos" },
+      { icon: "favorite", label: "Aniversarios y renovación de votos" },
       { icon: "cake", label: "Cumpleaños" },
+      { icon: "redeem", label: "Despedidas de soltera y baby showers" },
+      { icon: "school", label: "Graduaciones" },
+      { icon: "diversity_3", label: "Reuniones familiares" },
       { icon: "celebration", label: "Fiestas y reuniones" },
     ],
     outdoorTitle: "Al aire libre junto al lago",

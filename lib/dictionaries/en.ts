@@ -47,7 +47,7 @@ export const en = {
     tour: {
       title: "Book a Tour for Your Event",
       description:
-        "Planning a wedding, engagement, birthday or party on Van Norman Lake? Book a 30-minute tour of the lakefront decks, beach and rooms at Olde Mill Inn of Clarkston.",
+        "Planning a wedding, anniversary, birthday, shower, graduation or family reunion on Van Norman Lake? Book a 30-minute tour of the lakefront decks, beach and rooms at Olde Mill Inn of Clarkston.",
     },
     plan: {
       title: "Plan Your Stay — FAQs & Policies",
@@ -209,6 +209,12 @@ export const en = {
       },
     ],
     exploreLakefront: "Explore the lakefront",
+    celebrateEyebrow: "Celebrations by the lake",
+    celebrateTitle: "Celebrate Life's Milestones on the Water",
+    celebrateText: `From weddings and anniversaries to birthdays, showers and family reunions, gather indoors or outdoors beside ${property.lake}. Book a 30-minute tour to see the covered lakeside decks, beach and rooms, and talk through your plans.`,
+    celebrateAlt: "Covered lakeside deck with a long wooden table at Olde Mill Inn of Clarkston",
+    celebrateCta: "Book a tour",
+    anniversaryCta: "Anniversary getaway",
     pineTitle: "Going to Pine Knob? Stay Approximately Five Miles Away.",
     pineText:
       "Make Olde Mill Inn your Clarkston home base for concerts, skiing and seasonal events. Return after your outing to a quieter lakefront setting instead of a conventional highway hotel.",
@@ -260,6 +266,10 @@ export const en = {
     readyTitle: "Ready to stay?",
     readyText: "Check live availability and rates through our secure booking system, or call the inn.",
     relatedTitle: "You might also like",
+    celebrateTitle: "Celebrating something special?",
+    celebrateText:
+      "With a fireplace, full kitchen and lake views, this suite makes a memorable stay for a honeymoon or anniversary. Hosting family and friends too? Book a tour to see our lakeside spaces.",
+    celebrateLink: "Plan an event",
   },
 
   // Client component: strings only. {n} is replaced at render time.
@@ -434,14 +444,18 @@ export const en = {
     eyebrow: "Special events by the lake",
     title: "Book a Tour",
     subtitle:
-      "Planning a wedding, engagement, birthday or party? Come see the lakefront and our rooms in person. Pick a time below for a 30-minute visit.",
+      "Planning a wedding, anniversary, birthday, shower or family reunion? Come see the lakefront and our rooms in person. Pick a time below for a 30-minute visit.",
     heroAlt: "Covered lakeside deck with a long wooden table at Olde Mill Inn of Clarkston",
     occasionsTitle: "Celebrate by the lake",
     occasionsIntro: `Host your special day indoors or outdoors beside ${property.lake}: covered lakeside decks, a sandy beach and dock, and spacious rooms for you and your guests.`,
     occasions: [
-      { icon: "favorite", label: "Weddings" },
+      { icon: "local_florist", label: "Weddings" },
       { icon: "diamond", label: "Engagements" },
+      { icon: "favorite", label: "Anniversaries & vow renewals" },
       { icon: "cake", label: "Birthdays" },
+      { icon: "redeem", label: "Bridal & baby showers" },
+      { icon: "school", label: "Graduations" },
+      { icon: "diversity_3", label: "Family reunions" },
       { icon: "celebration", label: "Parties & gatherings" },
     ],
     outdoorTitle: "Outdoors by the lake",

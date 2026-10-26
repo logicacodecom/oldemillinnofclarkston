@@ -102,6 +102,22 @@ export default function RoomDetailPage({ params }: Props) {
             ))}
           </ul>
 
+          {room.slug === "honeymoon-family-suite" && (
+            <div className="flex gap-4 bg-surface-container-low rounded-2xl p-5 md:p-6 mb-8">
+              <Icon name="favorite" className="text-primary" />
+              <div>
+                <h2 className="font-headline-md text-lg text-on-surface mb-2">{rp.celebrateTitle}</h2>
+                <p className="text-on-surface-variant text-sm leading-relaxed mb-3">{rp.celebrateText}</p>
+                <Link
+                  href={localePath(lang, "/book-a-tour")}
+                  className="text-primary font-semibold underline underline-offset-2"
+                >
+                  {rp.celebrateLink}
+                </Link>
+              </div>
+            </div>
+          )}
+
           <p className="text-sm text-on-surface-variant border-t border-outline-variant/30 pt-4">
             {rp.policiesPrefix}{" "}
             <Link href={localePath(lang, "/plan-your-stay")} className="text-primary underline underline-offset-2">

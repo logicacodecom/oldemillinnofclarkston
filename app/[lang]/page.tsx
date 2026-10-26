@@ -6,7 +6,7 @@ import { RoomCard } from "@/components/RoomCard";
 import { AvailabilityWidget } from "@/components/AvailabilityWidget";
 import { property, addressLine, directionsUrl, northLocation } from "@/lib/property";
 import { offWaterRooms, lakefrontRooms } from "@/lib/rooms";
-import { featured } from "@/lib/gallery";
+import { featured, tourPhotos } from "@/lib/gallery";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
 
@@ -159,6 +159,54 @@ export default function HomePage({ params }: Props) {
             <CTA href={to("/lakefront-experience")} variant="outline">
               {h.exploreLakefront}
             </CTA>
+          </div>
+        </div>
+      </section>
+
+      {/* Celebrations & events */}
+      <section className="py-section-gap overflow-hidden">
+        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+          <div className="w-full lg:w-1/2">
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src={tourPhotos.outdoor[0]}
+                alt={h.celebrateAlt}
+                width={2048}
+                height={1378}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2">
+            <span className="text-sunset-accent font-label-lg uppercase tracking-[0.2em] mb-4 block">
+              {h.celebrateEyebrow}
+            </span>
+            <h2 className="font-headline-lg text-headline-lg text-primary mb-6 leading-tight">
+              {h.celebrateTitle}
+            </h2>
+            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+              {h.celebrateText}
+            </p>
+            <ul className="flex flex-wrap gap-2 mb-8">
+              {t.tour.occasions.map((o) => (
+                <li
+                  key={o.icon}
+                  className="flex items-center gap-2 rounded-full bg-surface-container px-3 py-1.5 text-sm text-on-surface"
+                >
+                  <Icon name={o.icon} className="text-primary text-base" />
+                  {o.label}
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <CTA href={to("/book-a-tour")} icon="event_available">
+                {h.celebrateCta}
+              </CTA>
+              <CTA href={to("/rooms/honeymoon-family-suite")} variant="outline" icon="favorite">
+                {h.anniversaryCta}
+              </CTA>
+            </div>
           </div>
         </div>
       </section>
